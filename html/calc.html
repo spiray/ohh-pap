@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAP Calculator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#007bff" />
+    <link rel="manifest" href="..\manifest.json">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="..\css\style.css">
+    <link rel="icon" href="..\images\Apps.ico">
+
+</head>
+
+
+<body id="calc-body">
+    <nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="..\index.html">
+                    <img src="..\images\qmeslogo.png" alt="logo" width="111" height="33">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="navbar-nav" id="navbar">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <img src="..\images\Calculator.ico" class="rounde-circle" width="24" height="24"> PAP Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://imanage.qmes.com/imanage/Default.aspx?" target="_blank" rel="noopener">
+                            <img src="..\images\Workflow.jpg" class="rounde-circle" width="24" height="24"> Workflow App
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PriceList.html">
+                            <img src="..\images\Price_list.png" width="24" height="24"> Supply Price List
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProductivityReports.html">
+                            <img src="..\images\reports.png" width="24" height="24"> Productivity Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="LocationPars.html">
+                            <img src="..\images\Location.svg" width="24" height="24"> Location Pars
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav nav ml-md-auto">
+                    <li class="navbar-text text-primary weather-design rounded">
+                        <label class="pl-3 pr-3 h5" id="locationDisplay">70 &#8457;</label>
+                    </li>
+                    <li class="navbar-text">
+                        <label id="todayIs"></label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container text-muted font-weight-bold calc-cards">
+        <div class="jumbotron jumbo-prim">
+            <form>
+                <div class="form-group firstSection">
+                    <div class="card-block">
+                        <h2 class="">Add Days to Date</h2>
+                        <div class="line pb-4"></div>
+                        <div class="row">
+                            <label for="dateInput" class="col-md-1 col-form-label">Date:</label>
+                            <div class="col-md-3">
+                                <input type="date" id="dateInput" class="date form-control"></input>
+                            </div>
+                            <label for="addToDate" class="col-form-label col-md-1"> + </label>
+                            <div class="col-md-2">
+                                <input type="text" id="addToDate" class="form-control"></input>
+                            </div>
+                            <label for="dateSum" class=" col-md-1 col-form-label"> = </label>
+                            <div class="col">
+                                <input type="text" id="dateSum" class="form-control" readonly></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <label class="col-form-label h4"><strong>Or:</strong></label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="jumbotron jumbo-prim">
+            <form>
+                <div class="form-group">
+                    <h2 class="">Figure Out Title</h2>
+                    <div class="line pb-4"></div>
+                    <div class="row">
+                        <label class="col-md-1 col-form-label" for="dateInput2">Date:</label>
+                        <div class="col">
+                            <input type="date" id="dateInput2" class="date form-control"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-md-1 col-form-label" for="Day30">Day 30:</label>
+                        <div class="col-md-3">
+                            <input type="text" id="Day30" class="form-control" value="" readonly></input>
+                        </div>
+                        <label class="col-md-1 col-form-label" for="Day60">Day 60:</label>
+                        <div class="col-md-3">
+                            <input type="text" id="Day60" class="form-control" value="" readonly></input>
+                        </div>
+                        <label class="col-md-1 col-form-label" for="Day90">Day 90:</label>
+                        <div class="col-md-3">
+                            <input type="text" id="Day90" class="form-control" value="" readonly></input>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <label class="col-md-1 col-form-label" for="Day120">Day 120:</label>
+                        <div class="col-md-5">
+                            <input type="text" id="Day120" class="form-control" value="" readonly></input>
+                        </div>
+                        <label class="col-md-1 col-form-label" for="Day150">Day 150:</label>
+                        <div class="col-md-5">
+                            <input type="text" id="Day150" class="form-control" value="" readonly></input>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <label class="col-md-1 col-form-label" for="Day45">Day 45:</label>
+                        <div class="col-md-5">
+                            <input type="text" id="Day45" class="form-control" value="" readonly></input>
+                        </div>
+                        <label class="col-md-1 col-form-label" for="Day83">Day 83:</label>
+                        <div class="col-md-5">
+                            <input type="text" id="Day83" class="form-control" value="" readonly></input>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <label class="col-md-1 col-form-label" for="Day31">Day 31:</label>
+                        <div class="col-md-5">
+                            <input type="text" id="Day31" class="form-control" value="" readonly></input>
+                        </div>
+                        <label class="col-md-1 col-form-label" for="Day91">Day 91:</label>
+                        <div class="col-md-5">
+                            <input type="text" id="Day91" class="form-control" value="" readonly></input>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <label class="col-md-1 col-form-label" for="DaysSince">Days Since:</label>
+                        <div class="col-md-5">
+                            <input type="text" id="DaysSince" class="form-control" value="" readonly></input>
+                        </div>
+                        <label class="col-md-1 col-form-label" for="Month15">Month 15:</label>
+                        <div class="col-md-5">
+                            <input type="text" id="Month15" class="form-control" value="" readonly></input>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <form>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <label class="col-form-label h4"><strong>Or:</strong></label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div class="jumbotron jumbo-prim">
+            <form>
+                <div class="form-group">
+                    <h2 class="">PAR Calculator</h2>
+                    <div class="line pb-4"></div>
+                    <div class="row">
+                        <label class="col-md-2 col-form-label" for="dateInput3">PAR Start Date:</label>
+                        <div class="col-md-4">
+                            <input type="date" id="dateInput3" class="form-control"></input>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="dateInput3">PAR End Date:</label>
+                        <div class="col-md-4">
+                            <input type="date" id="dateInput4" class="form-control"></input>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3"> </div>
+                        <label class=" col-md-2 col-form-label" for="Months">Months Between:</label>
+                        <div class="col-md-4">
+                            <input type="text" id="Months" class="form-control" value="" readonly></input>
+                        </div>
+                        <div class="col-md-3"> </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-bottom">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <p id="CopyRight">
+                        &copy; Joseph Spira 2017
+                    </p>
+                </div>
+            </div>
+        </nav>
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+<script src="..\js\moment.js"></script>
+<script src="..\js\HomePage.js"></script>
+
+
+</html>

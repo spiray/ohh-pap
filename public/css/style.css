@@ -1,0 +1,72 @@
+body {
+    background-color: #f8f5f5;
+    padding-top: 4%;
+}
+
+.ProdReport {
+    border: 4px outset teal;
+    width: 100%;
+    height: 470px;
+}
+
+.results tr[visible='false'],
+.no-result {
+    display: none;
+}
+
+.results tr[visible='true'] {
+    display: table-row;
+}
+
+.counter {
+    padding: 0.75%;
+    color: black;
+}
+
+#todayIs {
+    margin-left: 20px;
+}
+
+#getWeather {
+    margin-right: 20px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding-top: 125px;
+}
+
+.hundred {
+    width: 100%;
+    height: 300px;
+}
+
+.locationReport {
+    border: 4px outset teal;
+}
+
+.map {
+    background-image: url("..\\images\\map.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.jumbo-prim {
+    background-color: #007bff;
+    color: lightgray;
+}
+
+.line {
+    border-top: 1px solid lightgray;
+}
+
+.weather-design {
+    background-color: lightgray;
+    text-align: center;
+    text-justify: auto;
+    height: 45px;
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Location Pars</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#007bff" />
+    <link rel="manifest" href="..\manifest.json">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="..\css\style.css">
+    <link rel="icon" href="..\images\Apps.ico">
+
+</head>
+
+<body class="map">
+    <nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="..\index.html">
+                    <img src="..\images\qmeslogo.png" alt="logo" width="111" height="33">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="navbar-nav" id="navbar">
+                    <li class="nav-item">
+                        <a class="nav-link" href="calc.html">
+                            <img src="..\images\Calculator.ico" class="rounde-circle" width="24" height="24"> PAP Calculator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://imanage.qmes.com/imanage/Default.aspx?" target="_blank" rel="noopener">
+                            <img src="..\images\Workflow.jpg" class="rounde-circle" width="24" height="24"> Workflow App
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PriceList.html">
+                            <img src="..\images\Price_list.png" width="24" height="24"> Supply Price List
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProductivityReports.html">
+                            <img src="..\images\reports.png" width="24" height="24"> Productivity Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <img src="..\images\Location.svg" width="24" height="24"> Location Pars
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav nav ml-md-auto">
+                    <li class="navbar-text text-primary weather-design rounded">
+                        <label class="pl-3 pr-3 h5" id="locationDisplay">70 &#8457;</label>
+                    </li>
+                    <li class="navbar-text">
+                        <label id="todayIs"></label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row pt-4">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <iframe class="locationReport" src='https://oceanhomehealth-my.sharepoint.com/personal/joseph_oceanhomehealth_com/_layouts/15/WopiFrame.aspx?sourcedoc={db1baf0d-f79b-472e-ba4c-c7879a4bf213}&action=embedview&wdStartOn=1&wdEmbedCode=0&wdPrint=0' width='100%'
+                    height='650px' frameborder='0'>This is an embedded <a target='_blank' href='https://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='https://office.com/webapps'>Office Online</a>.</iframe>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-inline">
+                    <input type="text" class="search form-control" placeholder="Enter Zip Code..." />
+                    <button type="button" class="btn btn-primary findLoc form-control ml-2"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h3 class="card-title">Location:</h3>
+                        <p class="card-text" id="resultLoc">Enter Zip Code Above.</p>
+                        <a href="#" class="btn btn-primary" id="copyToClip" data-clipboard-action="copy" data-clipboard-target="#resultLoc"><i class="fa fa-clipboard" aria-hidden="true" ></i> Copy Location</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-bottom">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <p id="CopyRight">
+                        &copy; Joseph Spira 2017
+                    </p>
+                </div>
+            </div>
+        </nav>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+    <script src="..\js\HomePage.js"></script>
+
+</body>
+
+</html>

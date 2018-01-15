@@ -1,0 +1,22 @@
+{
+    "name": "ohhpapapp",
+    "version": "1.0.0",
+    "description": "App for PAP Team to perform basic tasks",
+    "main": "app.js",
+    "bugs": {
+        "email": "joseph@oceanhomehealth.com"
+    },
+    "author": {
+        "name": "Joseph Spira",
+        "email": "joseph@oceanhomehealth.com"
+    },
+    "license": "ISC",
+    "scripts": {
+        "start": "nodemon app"
+    },
+    "dependencies": {
+        "express": "^4.16.2",
+        "path": "^0.12.7",
+        "socket.io": "^2.0.4"
+    }
+}
