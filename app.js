@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const https = require('https');
+const bodyParser = require('body-parser');
 
 //Declare webpage paths
 const
@@ -14,7 +15,10 @@ const
 
 //Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(express.json());
+app.use(express.urlencoded());
 
 //Home Route
 app.get('/', (req, res) => {
@@ -50,23 +54,23 @@ app.listen(app.get('port'), () => {
 
 //Server side JS
 
-app.post('/getWeather', () => {
-    console.log(position);
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
-    const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
-    let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`;
+app.post('/getWeather', (req, res) => {
+    console.log('hello', req.body);
+    // let lat = req.body.position.coords.latitude;
+    // let lon = req.body.position.coords.longitude;
+    // const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
+    // let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`;
 
-    https.get(url, res => {
-        res.setEncoding('utf8');
-        let weather = '';
-        res.on('data', data => {
-            weather += data;
-        });
-        res.on('end', () => {
-            weather = JSON.parse(weather);
-        })
-    })
+    // https.get(url, res => {
+    //     res.setEncoding('utf8');
+    //     let weather = '';
+    //     res.on('data', data => {
+    //         weather += data;
+    //     });
+    //     res.on('end', () => {
+    //         weather = JSON.parse(weather);
+    //     })
+    // })
 })
 
 //     })

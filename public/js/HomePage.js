@@ -169,18 +169,20 @@ const geoLocation = () => {
     }
     //Callback func to call OpenWeatherMap for weather at given lon & lat.
 const getWeather = position => {
-    postData = position;
-    // socket.emit('getWeather', postData);
-    // socket.on('weather', currentWeather => {
-    //     console.log(currentWeather)
-    // });
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
-    currentWeather = loadJSON(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`, () => {
-        locationDisplay.innerHTML = `${currentWeather.name} - ${round(currentWeather.main.temp * 9 / 5 - 459.67)} &#8457;
-                                             <img width="26" height="26" src="http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png" />`;
-    }, response => console.error('Error in Weather API', response), 'jsonp');
+
+    httpPost('/getWeather', position, 'json', (data) => {
+        currentWeather = data;
+        console.log(`Got data ${data}`);
+    }, (response) => {
+        console.log(`Couldnt get weather data due to ${response}`)
+    });
+    // currentWeather = loadJSON(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`, () => {
+    //     locationDisplay.innerHTML = `${currentWeather.name} - ${round(currentWeather.main.temp * 9 / 5 - 459.67)} &#8457;
+    //                                          <img width="26" height="26" src="http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png" />`;
+    // }, response => console.error('Error in Weather API', response), 'jsonp');
 }
 
 //Func to loop through a column in a csv file and return the corresponding Location if found. 
