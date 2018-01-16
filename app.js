@@ -16,6 +16,7 @@ const
 //Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
+let jsonParser = bodyParser.json({ type: 'application/*+json' });
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -53,27 +54,16 @@ app.listen(app.get('port'), () => {
 
 //Server side JS
 
-app.post('/getWeather', (req, res) => {
+app.post('/getWeather', jsonParser, (req, res) => {
     // let lat = req.body;
     // let lon = req.body;
-    console.log('receiving data...');
-    res.send('Hello');
+    console.log('receiving data...', req.body);
+    res.jsonp(req.body.latitude);
     console.log('Data Sent...');
     // let lat = req.body.position.coords.latitude;
     // let lon = req.body.position.coords.longitude;
     // const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
     // let url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`;
-
-    // https.get(url, res => {
-    //     res.setEncoding('utf8');
-    //     let weather = '';
-    //     res.on('data', data => {
-    //         weather += data;
-    //     });
-    //     res.on('end', () => {
-    //         weather = JSON.parse(weather);
-    //     })
-    // })
 })
 
 //     })
