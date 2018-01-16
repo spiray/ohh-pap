@@ -16,14 +16,13 @@ const
 //Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: false }));
 
 //Home Route
 app.get('/', (req, res) => {
     res.sendFile(home);
-    console.log(__dirname, home);
 });
 
 //Calc Route
@@ -55,7 +54,11 @@ app.listen(app.get('port'), () => {
 //Server side JS
 
 app.post('/getWeather', (req, res) => {
-    console.log('hello', req.body);
+    // let lat = req.body;
+    // let lon = req.body;
+    console.log('receiving data...');
+    res.send('Hello');
+    console.log('Data Sent...');
     // let lat = req.body.position.coords.latitude;
     // let lon = req.body.position.coords.longitude;
     // const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
