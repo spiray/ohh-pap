@@ -16,7 +16,7 @@ const
 //Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-let jsonParser = bodyParser.json({ type: 'application/*+json' });
+let jsonParser = bodyParser.json();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -54,11 +54,12 @@ app.listen(app.get('port'), () => {
 
 //Server side JS
 
-app.post('/getWeather', jsonParser, (req, res) => {
+app.post('/getWeather', (req, res) => {
     // let lat = req.body;
     // let lon = req.body;
     console.log('receiving data...', req.body);
-    res.jsonp(req.body.latitude);
+    // res.jsonp(req.body);
+    // res.send({ name: 'POST Made...' });
     console.log('Data Sent...');
     // let lat = req.body.position.coords.latitude;
     // let lon = req.body.position.coords.longitude;
