@@ -57,8 +57,8 @@ app.listen(app.get('port'), () => {
 app.post('/getWeather', (req, res) => {
     // let lat = req.body;
     // let lon = req.body;
-    console.log('receiving data...', req.body);
-    // res.jsonp(req.body);
+    console.log('receiving data...', JSON.stringify(req.body));
+    res.jsonp(req.body);
     // res.send({ name: 'POST Made...' });
     console.log('Data Sent...');
     // let lat = req.body.position.coords.latitude;
