@@ -25,6 +25,8 @@ body {
 
 #todayIs {
     margin-left: 20px;
+    font-family: cursive;
+    font-size: large;
 }
 
 #getWeather {

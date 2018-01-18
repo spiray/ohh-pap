@@ -16,7 +16,6 @@ const
 //Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-let jsonParser = bodyParser.json();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
