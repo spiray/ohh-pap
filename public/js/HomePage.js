@@ -171,13 +171,13 @@ const getWeather = position => {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
-
-    // httpPost('/getWeather', position.coords, 'json', (data) => {
-    //     currentWeather = data;
-    //     console.log(`Got data ${data}`);
-    // }, (response) => {
-    //     console.log(`Couldnt get weather data due to ${response}`)
-    // });
+    console.info(lat, lon);
+    httpPost('/getWeather', position.coords, 'json', (data) => {
+        currentWeather = JSON.parse(data);
+        console.log(`Got data ${currentWeather}`);
+    }, (response) => {
+        console.log(`Couldnt get weather data due to ${response}`)
+    });
     currentWeather = loadJSON(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`, () => {
         locationDisplay.innerHTML = `${currentWeather.name} - ${round(currentWeather.main.temp * 9 / 5 - 459.67)} &#8457;
                                              <img width="26" height="26" src="http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png" />`;

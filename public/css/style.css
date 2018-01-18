@@ -82,3 +82,7 @@ body {
     border: 0.15rem solid #868e96;
     padding: 0.10rem;
 }
+
+.card-header {
+    background-color: lightgray;
+}

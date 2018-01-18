@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 const https = require('https');
 const bodyParser = require('body-parser');
+const Client = require('node-rest-client').Client;
 
 //Declare webpage paths
 const
@@ -11,7 +12,8 @@ const
     calc = path.join(__dirname, 'html/calc.html'),
     priceList = path.join(__dirname, 'html/PriceList.html'),
     reports = path.join(__dirname, 'html/ProductivityReports.html'),
-    locationPars = path.join(__dirname, 'html/LocationPars.html');
+    locationPars = path.join(__dirname, 'html/LocationPars.html'),
+    client = new Client();
 
 //Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -54,10 +56,15 @@ app.listen(app.get('port'), () => {
 //Server side JS
 
 app.post('/getWeather', (req, res) => {
-    // let lat = req.body;
-    // let lon = req.body;
-    console.log('receiving data...', JSON.stringify(req.body));
-    res.jsonp(req.body);
+    let weather;
+    let lat = 40.0519037;
+    let lon = -74.1768297;
+    const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
+    client.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`, (data, response) => {
+            weather = JSON.stringify(data.name);
+        })
+        // console.log('receiving data...', JSON.stringify(req.body));
+    res.send(weather);
     // res.send({ name: 'POST Made...' });
     console.log('Data Sent...');
     // let lat = req.body.position.coords.latitude;
