@@ -55,10 +55,11 @@ body {
     background-size: cover;
 }
 
-.jumbo-prim {
+
+/* .jumbo-prim {
     background-color: #007bff;
     color: lightgray;
-}
+} */
 
 .line {
     border-top: 1px solid lightgray;
@@ -69,4 +70,13 @@ body {
     text-align: center;
     text-justify: auto;
     height: 45px;
+}
+
+.firstSection {
+    padding-top: 3%;
+}
+
+.card-block {
+    border: 0.15rem solid #868e96;
+    padding: 0.10rem;
 }
