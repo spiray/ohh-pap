@@ -16,6 +16,7 @@ let
     socket;
 
 function preload() {
+    console.time('preload');
     //Preload price table csv.
     priceTableH = select("#pricetable");
     if (priceTableH) {
@@ -26,9 +27,11 @@ function preload() {
     if (resultCard) {
         branchListing = loadTable('..\\data\\branchListing.csv', 'csv', 'header');
     }
+    console.timeEnd('preload');
 }
 
 function setup() {
+    console.time('setup');
     //Set variables
     const addToDate = select('#addToDate');
     const dateSum = select('#dateSum');
@@ -117,6 +120,7 @@ function setup() {
             console.log('Copied...');
         })
     }
+    console.timeEnd('setup');
 }
 //Functionality
 
