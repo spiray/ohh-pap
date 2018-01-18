@@ -11,9 +11,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="..\css\style.css">
     <link rel="icon" href="..\images\Apps.ico">
-
 </head>
-
 
 <body id="calc-body">
     <nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top">
@@ -66,12 +64,14 @@
         </div>
     </nav>
     <div class="container text-muted font-weight-bold calc-cards">
-        <div class="jumbotron jumbo-prim">
-            <form>
-                <div class="form-group firstSection">
-                    <div class="card-block">
+        <form>
+            <div class="form-group firstSection">
+                <div class="card-block rounded">
+                    <div class="card-header pb-1">
+                        <i class="fa fa-calculator" aria-hidden="true"></i>
                         <h2 class="">Add Days to Date</h2>
-                        <div class="line pb-4"></div>
+                    </div>
+                    <div class="card-body">
                         <div class="row">
                             <label for="dateInput" class="col-md-1 col-form-label">Date:</label>
                             <div class="col-md-3">
@@ -88,126 +88,121 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <label class="col-form-label h4"><strong>Or:</strong></label>
+            </div>
         </div>
-
         <form>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <label class="col-form-label h4"><strong>Or:</strong></label>
+            <div class="form-group pt-2">
+                <div class="card-block rounded">
+                    <div class="card-header pb-1">
+                        <h2 class="">Figure Out Title</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row pb-3">
+                            <label class="col-md-1 col-form-label" for="dateInput2">Date:</label>
+                            <div class="col">
+                                <input type="date" id="dateInput2" class="date form-control"></input>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-1 col-form-label" for="Day30">Day 30:</label>
+                                <div class="col-md-3">
+                                    <input type="text" id="Day30" class="form-control" value="" readonly></input>
+                                </div>
+                                <label class="col-md-1 col-form-label" for="Day60">Day 60:</label>
+                                <div class="col-md-3">
+                                    <input type="text" id="Day60" class="form-control" value="" readonly></input>
+                                </div>
+                                <label class="col-md-1 col-form-label" for="Day90">Day 90:</label>
+                                <div class="col-md-3">
+                                    <input type="text" id="Day90" class="form-control" value="" readonly></input>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <label class="col-md-1 col-form-label" for="Day120">Day 120:</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="Day120" class="form-control" value="" readonly></input>
+                                </div>
+                                <label class="col-md-1 col-form-label" for="Day150">Day 150:</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="Day150" class="form-control" value="" readonly></input>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <label class="col-md-1 col-form-label" for="Day45">Day 45:</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="Day45" class="form-control" value="" readonly></input>
+                                </div>
+                                <label class="col-md-1 col-form-label" for="Day83">Day 83:</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="Day83" class="form-control" value="" readonly></input>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <label class="col-md-1 col-form-label" for="Day31">Day 31:</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="Day31" class="form-control" value="" readonly></input>
+                                </div>
+                                <label class="col-md-1 col-form-label" for="Day91">Day 91:</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="Day91" class="form-control" value="" readonly></input>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <label class="col-md-1 col-form-label" for="DaysSince">Days Since:</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="DaysSince" class="form-control" value="" readonly></input>
+                                </div>
+                                <label class="col-md-1 col-form-label" for="Month15">Month 15:</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="Month15" class="form-control" value="" readonly></input>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
-        <div class="jumbotron jumbo-prim">
-            <form>
-                <div class="form-group">
-                    <h2 class="">Figure Out Title</h2>
-                    <div class="line pb-4"></div>
-                    <div class="row">
-                        <label class="col-md-1 col-form-label" for="dateInput2">Date:</label>
-                        <div class="col">
-                            <input type="date" id="dateInput2" class="date form-control"></input>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <label class="col-md-1 col-form-label" for="Day30">Day 30:</label>
-                        <div class="col-md-3">
-                            <input type="text" id="Day30" class="form-control" value="" readonly></input>
-                        </div>
-                        <label class="col-md-1 col-form-label" for="Day60">Day 60:</label>
-                        <div class="col-md-3">
-                            <input type="text" id="Day60" class="form-control" value="" readonly></input>
-                        </div>
-                        <label class="col-md-1 col-form-label" for="Day90">Day 90:</label>
-                        <div class="col-md-3">
-                            <input type="text" id="Day90" class="form-control" value="" readonly></input>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <label class="col-md-1 col-form-label" for="Day120">Day 120:</label>
-                        <div class="col-md-5">
-                            <input type="text" id="Day120" class="form-control" value="" readonly></input>
-                        </div>
-                        <label class="col-md-1 col-form-label" for="Day150">Day 150:</label>
-                        <div class="col-md-5">
-                            <input type="text" id="Day150" class="form-control" value="" readonly></input>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <label class="col-md-1 col-form-label" for="Day45">Day 45:</label>
-                        <div class="col-md-5">
-                            <input type="text" id="Day45" class="form-control" value="" readonly></input>
-                        </div>
-                        <label class="col-md-1 col-form-label" for="Day83">Day 83:</label>
-                        <div class="col-md-5">
-                            <input type="text" id="Day83" class="form-control" value="" readonly></input>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <label class="col-md-1 col-form-label" for="Day31">Day 31:</label>
-                        <div class="col-md-5">
-                            <input type="text" id="Day31" class="form-control" value="" readonly></input>
-                        </div>
-                        <label class="col-md-1 col-form-label" for="Day91">Day 91:</label>
-                        <div class="col-md-5">
-                            <input type="text" id="Day91" class="form-control" value="" readonly></input>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <label class="col-md-1 col-form-label" for="DaysSince">Days Since:</label>
-                        <div class="col-md-5">
-                            <input type="text" id="DaysSince" class="form-control" value="" readonly></input>
-                        </div>
-                        <label class="col-md-1 col-form-label" for="Month15">Month 15:</label>
-                        <div class="col-md-5">
-                            <input type="text" id="Month15" class="form-control" value="" readonly></input>
-                        </div>
-                    </div>
-                </div>
-            </form>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <label class="col-form-label h4"><strong>Or:</strong></label>
+            </div>
         </div>
         <form>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <label class="col-form-label h4"><strong>Or:</strong></label>
+            <div class="form-group pt-2">
+                <div class="card-block rounded">
+                    <div class="card-header pb-1">
+                        <h2 class="">PAR Calculator</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <label class="col-md-2 col-form-label" for="dateInput3">PAR Start Date:</label>
+                            <div class="col-md-4">
+                                <input type="date" id="dateInput3" class="form-control"></input>
+                            </div>
+                            <label class="col-md-2 col-form-label" for="dateInput3">PAR End Date:</label>
+                            <div class="col-md-4">
+                                <input type="date" id="dateInput4" class="form-control"></input>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-3"> </div>
+                            <label class=" col-md-2 col-form-label" for="Months">Months Between:</label>
+                            <div class="col-md-4">
+                                <input type="text" id="Months" class="form-control" value="" readonly></input>
+                            </div>
+                            <div class="col-md-3"> </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
-        <br>
-        <div class="jumbotron jumbo-prim">
-            <form>
-                <div class="form-group">
-                    <h2 class="">PAR Calculator</h2>
-                    <div class="line pb-4"></div>
-                    <div class="row">
-                        <label class="col-md-2 col-form-label" for="dateInput3">PAR Start Date:</label>
-                        <div class="col-md-4">
-                            <input type="date" id="dateInput3" class="form-control"></input>
-                        </div>
-                        <label class="col-md-2 col-form-label" for="dateInput3">PAR End Date:</label>
-                        <div class="col-md-4">
-                            <input type="date" id="dateInput4" class="form-control"></input>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-md-3"> </div>
-                        <label class=" col-md-2 col-form-label" for="Months">Months Between:</label>
-                        <div class="col-md-4">
-                            <input type="text" id="Months" class="form-control" value="" readonly></input>
-                        </div>
-                        <div class="col-md-3"> </div>
-                    </div>
-                </div>
-            </form>
-        </div>
     </div>
-
     <footer id="footer">
         <nav class="navbar navbar-expand-md bg-primary navbar-dark sticky-bottom">
             <div class="container-fluid">
