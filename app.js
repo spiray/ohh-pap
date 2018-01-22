@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Home Route
-app.get('\/\?/index.html', (req, res) => {
+app.get(/(\/|\/index.html)/, (req, res) => {
     res.sendFile(home);
 });
 

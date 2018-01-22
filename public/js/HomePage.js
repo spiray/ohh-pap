@@ -20,11 +20,18 @@ function preload() {
     //Preload price table csv.
     priceTableH = select("#pricetable");
     if (priceTableH) {
-        fetch('/getPriceTable')
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err));
-        // priceData = loadTable('..\\data\\pricetable.csv', 'csv', 'header');
+        // fetch('/getPriceTable')
+        //     .then(response => response.text())
+        //     .then(data => {
+        //         priceData = data => {
+        //             let rows = data.split('\n');
+        //             return rows.map(row => {
+        //                 return row.split(',');
+        //             });
+        //         };
+        //     })
+        //     .catch(err => console.log(err));
+        priceData = loadTable('..\\data\\pricetable.csv', 'csv', 'header');
     }
     //Preload Branch Listing data into variable. 
     resultCard = select('.card');
