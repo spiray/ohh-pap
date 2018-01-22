@@ -168,15 +168,15 @@ const geoLocation = () => {
     }
     //Callback func to call OpenWeatherMap for weather at given lon & lat.
 const getWeather = position => {
-
+    console.log(position);
     //POST request to server side GET request.
-    fetch('/getWeather', {
+    fetch('/getGeoWeather', {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
+                "Accept": "*/*",
+                "Content-type": "*/*"
             },
-            body: JSON.stringify({ position: position.coords })
+            body: JSON.stringify(position)
         })
         .then(response => response.json())
         .then(data => {
@@ -184,18 +184,6 @@ const getWeather = position => {
                                              <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`
         })
         .catch(err => console.log(`API Error ${err}`));
-
-    //Client side GET Request for weather
-    // let lat = position.coords.latitude;
-    // let lon = position.coords.longitude;
-    // APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
-    // fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
-    //                                          <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`
-    //     })
-    //     .catch(err => console.error('Error in Weather API', err));
 }
 
 //Func to loop through a column in a csv file and return the corresponding Location if found. 

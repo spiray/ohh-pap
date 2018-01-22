@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Home Route
-app.get('/', (req, res) => {
+app.get('\/\?/index.html', (req, res) => {
     res.sendFile(home);
 });
 
@@ -54,8 +54,7 @@ app.listen(app.get('port'), () => {
 
 //Server side JS
 
-app.post('/getWeather', (req, res) => {
-    let weather;
+app.post('/getGeoWeather', (req, res) => {
     let lat = 40.0519037;
     let lon = -74.1768297;
     const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
@@ -63,8 +62,8 @@ app.post('/getWeather', (req, res) => {
         .then(response => response.json())
         .then(data => res.send(data))
         .catch(err => console.log(err));
-    // res.send({ name: 'POST Made...' });
     console.log('Data Sent...');
+    console.log(req.body);
     // let lat = req.body.position.coords.latitude;
     // let lon = req.body.position.coords.longitude;
     // const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
