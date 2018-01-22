@@ -20,7 +20,11 @@ function preload() {
     //Preload price table csv.
     priceTableH = select("#pricetable");
     if (priceTableH) {
-        priceData = loadTable('..\\data\\pricetable.csv', 'csv', 'header');
+        fetch('/getPriceTable')
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+        // priceData = loadTable('..\\data\\pricetable.csv', 'csv', 'header');
     }
     //Preload Branch Listing data into variable. 
     resultCard = select('.card');

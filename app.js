@@ -12,7 +12,8 @@ const
     calc = path.join(__dirname, 'html/calc.html'),
     priceList = path.join(__dirname, 'html/PriceList.html'),
     reports = path.join(__dirname, 'html/ProductivityReports.html'),
-    locationPars = path.join(__dirname, 'html/LocationPars.html');
+    locationPars = path.join(__dirname, 'html/LocationPars.html'),
+    priceTable = path.join(__dirname, 'public/data/pricetable.csv');
 
 //Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,6 +46,12 @@ app.get('/html/ProductivityReports.html', (req, res) => {
 app.get('/html/LocationPars.html', (req, res) => {
     res.sendFile(locationPars);
 });
+
+//Send prictable.csv
+app.get('/getPriceTable', (req, res) => {
+    console.log('API hit...');
+    res.sendFile(priceTable);
+})
 
 //Set port and listen on that port
 app.set('port', (process.env.PORT || 8877));
