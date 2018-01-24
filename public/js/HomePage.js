@@ -131,6 +131,13 @@ function setup() {
             console.log('Copied...');
         })
     }
+    let contactModalBtn = select('#contact-us');
+    if (contactModalBtn) {
+        console.log('Modal Launcher is there...', contactModalBtn)
+        contactModalBtn.mouseClicked(e => {
+            console.log('Modal should open...');
+        })
+    }
     console.timeEnd('setup');
 }
 //Functionality
