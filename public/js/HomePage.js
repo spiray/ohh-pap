@@ -54,6 +54,7 @@ function setup() {
     const copyBtn = select('#copyToClip');
     const locationDisplay = select('#locationDisplay');
     const getWeather = select('#getWeather');
+    const contactSubmit = select('#contact-submit');
     zipSearch = select('.search');
     resultLoc = select('#resultLoc');
 
@@ -129,6 +130,28 @@ function setup() {
         new Clipboard('#copyToClip');
         copyBtn.mouseClicked(() => {
             console.log('Copied...');
+        })
+    }
+    if (contactSubmit) {
+        contactSubmit.mouseClicked(() => {
+            let name = select('#contactName').value();
+            let subject = select('#contactSubject').value();
+            let body = select('#contactBody').value();
+            let email = {
+                name: name,
+                subject: subject,
+                body: body
+            };
+            fetch('/emailContactForm', {
+                    method: 'POST',
+                    headers: {
+                        "Accept": "*/*",
+                        "Content-type": "*/*"
+                    },
+                    body: JSON.stringify(email)
+                })
+                .then(response => response.text())
+                .then(data => console.log(data));
         })
     }
     console.timeEnd('setup');

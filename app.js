@@ -5,6 +5,7 @@ const app = express();
 const https = require('https');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
+const nodemailer = require('nodemailer');
 
 //Declare webpage paths
 const
@@ -74,4 +75,38 @@ app.post('/getGeoWeather', (req, res) => {
         .catch(err => console.log(err));
     console.log('Data Sent...');
     console.log(req.body);
+})
+
+let transporter = nodemailer.createTransport({
+    host: "smtp-mail.outlook.com",
+    secureConnection: false,
+    port: 587,
+    auth: {
+        user: "joseph@oceanhomehealth.com",
+        pass: "Hellopo1i"
+    },
+    tls: {
+        ciphers: 'SSLv3'
+    },
+    auth: {
+        user: 'joseph@oceanhomehealth.com',
+        pass: 'Hellopo1i'
+    }
+});
+app.post('/emailContactForm', (req, res) => {
+    let mailOptions = {
+        from: `${req.body.name}<joseph@oceanhomehealth.com>`,
+        to: '<joseph@oceanhomehealth.com>',
+        subject: req.body.subject,
+        text: req.body.body
+    };
+
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log(`Message Sent: ${info.response}`);
+    })
+    res.send('Email Sent...')
 })
