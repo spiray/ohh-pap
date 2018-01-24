@@ -134,6 +134,7 @@ function setup() {
     }
     if (contactSubmit) {
         contactSubmit.mouseClicked(() => {
+            let closeModal = select('#close-modal');
             let name = select('#contactName').value();
             let subject = select('#contactSubject').value();
             let body = select('#contactBody').value();

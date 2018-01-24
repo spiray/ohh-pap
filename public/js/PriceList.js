@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    $('#contact-submit').click(() => {
+        console.log('Modal Hidden...');
+        $('#contact-us').modal('hide');
+    })
     $('.search').keyup(function() {
         let searchTerm = $('.search').val();
         let listItem = $('.results tbody').children('tr');

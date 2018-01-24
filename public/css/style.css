@@ -86,3 +86,7 @@ body {
 .card-header {
     background-color: lightgray;
 }
+
+#footer-buttons {
+    height: 50%;
+}
