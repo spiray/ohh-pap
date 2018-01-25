@@ -97,10 +97,10 @@ let transporter = nodemailer.createTransport({
 app.post('/emailContactForm', (req, res) => {
     console.log(req.body);
     let mailOptions = {
-        from: `${req.body.name}<joseph@oceanhomehealth.com>`,
+        from: `<joseph@oceanhomehealth.com>`,
         to: '<joseph@oceanhomehealth.com>',
-        subject: req.body.subject,
-        html: req.body.body
+        subject: `${req.body.name} - ${req.body.subject}`,
+        html: `${req.body.body}</br>${req.body.name}`
     };
 
 
