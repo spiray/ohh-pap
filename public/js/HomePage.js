@@ -55,6 +55,7 @@ function setup() {
     const locationDisplay = select('#locationDisplay');
     const getWeather = select('#getWeather');
     const contactSubmit = select('#contact-submit');
+    const placeholderJson = select('#placeholder-json');
     zipSearch = select('.search');
     resultLoc = select('#resultLoc');
 
@@ -72,6 +73,19 @@ function setup() {
     setInterval(geoLocation, 1000 * 60 * 30);
 
     //Functionality and event listeners for the calculator. 
+    if (placeholderJson) {
+        let posts = '';
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                for (post of data) {
+                    posts += post.body;
+                }
+                placeholderJson.html(posts)
+            })
+            .catch(err => console.log(err));
+    }
     if (addToDate) {
         addToDate.input(() => {
             dateValue = dateInput.value();
