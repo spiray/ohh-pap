@@ -20,8 +20,6 @@ const
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 //Home Route
 app.get('/', (req, res) => {
@@ -94,6 +92,7 @@ let transporter = nodemailer.createTransport({
     }
 });
 app.post('/emailContactForm', (req, res) => {
+    console.log(req.body);
     let mailOptions = {
         from: `${req.body.name}<joseph@oceanhomehealth.com>`,
         to: '<joseph@oceanhomehealth.com>',

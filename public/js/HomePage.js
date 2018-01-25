@@ -147,14 +147,15 @@ function setup() {
                     method: 'POST',
                     headers: {
                         "Accept": "*/*",
-                        "Content-type": "*/*"
+                        "Content-type": "application/json"
                     },
                     body: JSON.stringify(email)
                 })
                 .then(response => response.text())
-                .then(data => console.log(data));
+                .then(data => alert(data));
         })
     }
+    CKEDITOR.replace('contactBody');
     console.timeEnd('setup');
 }
 //Functionality
