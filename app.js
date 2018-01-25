@@ -66,6 +66,9 @@ app.listen(app.get('port'), () => {
 app.post('/getGeoWeather', (req, res) => {
     let lat = 40.0519037;
     let lon = -74.1768297;
+    console.log(req.body);
+    // let lat = req.body.coords.latitude;
+    // let lon = req.body.coors.logitude;
     const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
     fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
         .then(response => response.json())
@@ -97,7 +100,7 @@ app.post('/emailContactForm', (req, res) => {
         from: `${req.body.name}<joseph@oceanhomehealth.com>`,
         to: '<joseph@oceanhomehealth.com>',
         subject: req.body.subject,
-        text: req.body.body
+        html: req.body.body
     };
 
 

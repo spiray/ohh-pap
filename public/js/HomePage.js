@@ -132,17 +132,19 @@ function setup() {
             console.log('Copied...');
         })
     }
+    CKEDITOR.replace('contactBody');
     if (contactSubmit) {
         contactSubmit.mouseClicked(() => {
             let closeModal = select('#close-modal');
             let name = select('#contactName').value();
             let subject = select('#contactSubject').value();
-            let body = select('#contactBody').value();
+            let body = CKEDITOR.instances.contactBody.getData();
             let email = {
                 name: name,
                 subject: subject,
                 body: body
             };
+            console.log(email);
             fetch('/emailContactForm', {
                     method: 'POST',
                     headers: {
@@ -155,7 +157,6 @@ function setup() {
                 .then(data => alert(data));
         })
     }
-    CKEDITOR.replace('contactBody');
     console.timeEnd('setup');
 }
 //Functionality
@@ -210,7 +211,7 @@ const getWeather = position => {
             method: 'POST',
             headers: {
                 "Accept": "*/*",
-                "Content-type": "*/*"
+                "Content-type": "application/json"
             },
             body: JSON.stringify(position)
         })
