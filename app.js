@@ -103,10 +103,6 @@ let transporter = nodemailer.createTransport({
     },
     tls: {
         ciphers: 'SSLv3'
-    },
-    auth: {
-        user: 'joseph@oceanhomehealth.com',
-        pass: 'Hellopo1i'
     }
 });
 app.post('/emailContactForm', (req, res) => {
