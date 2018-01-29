@@ -6,6 +6,7 @@ const https = require('https');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const nodemailer = require('nodemailer');
+const fs = require('fs');
 
 //Declare webpage paths
 const
@@ -16,11 +17,24 @@ const
     locationPars = path.join(__dirname, 'html/LocationPars.html'),
     priceTable = path.join(__dirname, 'public/data/pricetable.csv');
 
+
+//Confirgure environment
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 //Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Configure Body parser to streamline HTTP requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Dynamically include routes (Controller)
+// fs.readdirSync('./controllers').forEach(file => {
+//     if (file.substr(-3) == '.js') {
+//         route = require('./controllers/' + file);
+//         route.controller(app);
+//     }
+// });
 //Home Route
 app.get('/', (req, res) => {
     res.sendFile(home);
@@ -51,11 +65,10 @@ app.get('/html/LocationPars.html', (req, res) => {
 
 //Send prictable.csv
 app.get('/getPriceTable', (req, res) => {
-    console.log('API hit...');
-    res.sendFile(priceTable);
-})
-
-//Set port and listen on that port
+        console.log('API hit...');
+        res.sendFile(priceTable);
+    })
+    //Set port and listen on that port
 app.set('port', (process.env.PORT || 8877));
 app.listen(app.get('port'), () => {
     console.log('App is running...');
