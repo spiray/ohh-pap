@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
+const keys = require('./config/keys');
 
 //Declare webpage paths
 const
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // });
 //Home Route
 app.get('/', (req, res) => {
+    console.log(keys);
     res.sendFile(home);
 });
 app.get('/index.html', (req, res) => {
@@ -82,7 +84,7 @@ app.post('/getGeoWeather', (req, res) => {
     console.log(req.body);
     // let lat = req.body.coords.latitude;
     // let lon = req.body.coors.logitude;
-    const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
+    const APIKey = keys.weatherAPI;
     fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
         .then(response => response.json())
         .then(data => res.send(data))
@@ -97,7 +99,7 @@ let transporter = nodemailer.createTransport({
     port: 587,
     auth: {
         user: "joseph@oceanhomehealth.com",
-        pass: "Hellopo1i"
+        pass: keys.emailPass
     },
     tls: {
         ciphers: 'SSLv3'
