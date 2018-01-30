@@ -1,6 +1,5 @@
 //Declare global variables
-let
-    dateValue,
+let dateValue,
     priceData,
     priceTableH,
     tableRow,
