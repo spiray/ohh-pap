@@ -13,10 +13,11 @@ const express = require('express'),
 const app = express();
 
 //Confirgure environment
-app.set('views', path.join(__dirname, '/app/views'));
+// app.set('views', `${__dirname}/app/views`);
+console.log(`${__dirname}/app/views`);
 let hbs = exphbs.create({
     defaultLayout: 'main',
-    // layoutsDir: 'app/views/layouts'
+    layoutsDir: `${__dirname}/app/views`
 });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
