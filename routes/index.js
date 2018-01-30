@@ -1,15 +1,15 @@
-const nodemailer = require('nodemailer'),
-    keys = require('../config/keys'),
-    path = require('path'),
-    home = path.join(__dirname, '../index.html'),
-    calc = path.join(__dirname, '../html/calc.html'),
-    priceList = path.join(__dirname, '../html/PriceList.html'),
-    reports = path.join(__dirname, '../html/ProductivityReports.html'),
-    locationPars = path.join(__dirname, '../html/LocationPars.html'),
-    priceTable = path.join(__dirname, '../public/data/pricetable.csv'),
-    fetch = require('node-fetch');
+//Global route handling
+module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
 
-module.exports = app => {
+    //Declare variables
+    const home = path.join(__dirname, '../index.html'),
+        calc = path.join(__dirname, '../html/calc.html'),
+        priceList = path.join(__dirname, '../html/PriceList.html'),
+        reports = path.join(__dirname, '../html/ProductivityReports.html'),
+        locationPars = path.join(__dirname, '../html/LocationPars.html'),
+        priceTable = path.join(__dirname, '../public/data/pricetable.csv'),
+        branchTable = path.join(__dirname, '../public/data/branchListing.csv');
+
     //Home Route
     app.get('/', (req, res) => {
         res.sendFile(home);
