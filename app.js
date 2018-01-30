@@ -13,9 +13,13 @@ const express = require('express'),
 const app = express();
 
 //Confirgure environment
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handelbars');
-// app.set('views', `${__dirname}/app/views`);
+app.set('views', path.join(__dirname, '/app/views'));
+let hbs = exphbs.create({
+    defaultLayout: 'main',
+    // layoutsDir: 'app/views/layouts'
+});
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 //Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -28,8 +32,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 fs.readdirSync('./routes').forEach(file => {
     if (file == 'index.js') {
         require(`./routes/${file}`)(app, nodemailer, path, fetch, keys, exphbs);
-        // route = require('./routes/' + file);
-        // route.controller(app);
     }
 });
 

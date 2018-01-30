@@ -12,7 +12,7 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
 
     //Home Route
     app.get('/', (req, res) => {
-        res.sendFile(home);
+        res.render('home');
     });
     app.get('/index.html', (req, res) => {
         res.sendFile(home);
