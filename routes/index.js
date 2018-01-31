@@ -1,6 +1,20 @@
 //Global route handling
 module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
 
+    //Configure mailer
+    let transporter = nodemailer.createTransport({
+        host: "smtp-mail.outlook.com",
+        secureConnection: false,
+        port: 587,
+        auth: {
+            user: "joseph@oceanhomehealth.com",
+            pass: keys.emailPass
+        },
+        tls: {
+            ciphers: 'SSLv3'
+        }
+    });
+
     //Home Route
     app.get('/', (req, res) => {
         res.render('home');
@@ -48,18 +62,6 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
         console.log('Weather Sent...');
     })
 
-    let transporter = nodemailer.createTransport({
-        host: "smtp-mail.outlook.com",
-        secureConnection: false,
-        port: 587,
-        auth: {
-            user: "joseph@oceanhomehealth.com",
-            pass: keys.emailPass
-        },
-        tls: {
-            ciphers: 'SSLv3'
-        }
-    });
     app.post('/emailContactForm', (req, res) => {
         console.log(req.body);
         let mailOptions = {
