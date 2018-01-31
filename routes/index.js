@@ -26,7 +26,7 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
 
     //Location Pars route
     app.get('/location-pars', (req, res) => {
-        res.sendFile(locationPars);
+        res.render('location-pars');
     });
 
     //Send prictable.csv
