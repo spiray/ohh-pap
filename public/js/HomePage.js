@@ -105,24 +105,36 @@ function setup() {
             inTags = selectAll('input');
             for (let i = 0; i < inTags.length; i++) {
                 if (inTags[i].id().substring(0, 3) == 'Day' && inTags[i].id() !== 'DaysSince') {
-                    inTags[i].attribute("value", moment(dateInput2.value()).add(parseInt(inTags[i].id().substring(3)), 'day').calendar());
+                    inTags[i].attribute("value",
+                        moment(dateInput2.value())
+                        .add(parseInt(inTags[i].id().substring(3)), 'day')
+                        .calendar());
                 } else if (inTags[i].id() == 'Month15') {
-                    inTags[i].value(moment(dateInput2.value()).add(15, 'months').calendar());
+                    inTags[i].value(
+                        moment(dateInput2.value())
+                        .add(15, 'months')
+                        .calendar());
                 } else if (inTags[i].id() == 'DaysSince') {
-                    inTags[i].value((moment(`${month()}/${day()}/${year()}`).diff(dateInput2.value(), 'days')));
+                    inTags[i].value((
+                        moment(`${month()}/${day()}/${year()}`)
+                        .diff(dateInput2.value(), 'days')));
                 }
             }
         });
     }
     if (dateInput4) {
         dateInput4.changed(() => {
-            select('#Months').value(moment(dateInput4.value()).diff(dateInput3.value(), 'months'));
+            select('#Months').value(
+                moment(dateInput4.value())
+                .diff(dateInput3.value(), 'months'));
         });
     }
     if (dateInput3) {
         dateInput3.changed(() => {
             if (dateInput4.value()) {
-                select('#Months').value(moment(dateInput4.value()).diff(dateInput3.value(), 'months'));
+                select('#Months').value(
+                    moment(dateInput4.value())
+                    .diff(dateInput3.value(), 'months'));
             }
         });
     }
@@ -207,17 +219,33 @@ const geoLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(getWeather);
         } else {
-            currentZip = prompt('Please enter your zip code.')
-            APIKey = '790e3bcb8a16e2395b51c9f39b7909f7';
-            currentWeather = loadJSON(`http://api.openweathermap.org/data/2.5/weather?zip=${currentZip},us&APPID=${APIKey}`, weather => {
-                locationDisplay.innerHTML = `${currentWeather.name} - ${round(currentWeather.main.temp * 9 / 5 - 459.67)} &#8457;
-            <img width="26" height="26" src="http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png" />`;
-            });
+            while (true) {
+                currentZip = prompt('Please enter your zip code.');
+                if (currentZip.length == 5) {
+                    break;
+                } else {
+                    currentZip = prompt('Please enter your zip code.');
+                }
+            }
+            fetch('getZipWeather', {
+                    method: 'POST',
+                    headers: {
+                        "Accept": "*/*",
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify({ zip: currentZip })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
+            <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
+                })
         }
     }
     //Callback func to call OpenWeatherMap for weather at given lon & lat.
 const getWeather = position => {
-    console.log(position);
+    let geoPosition = position;
+    console.log(geoPosition);
     //POST request to server side GET request.
     fetch('/getGeoWeather', {
             method: 'POST',
@@ -225,7 +253,7 @@ const getWeather = position => {
                 "Accept": "*/*",
                 "Content-type": "application/json"
             },
-            body: JSON.stringify(position)
+            body: JSON.stringify(geoPosition)
         })
         .then(response => response.json())
         .then(data => {

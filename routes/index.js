@@ -53,17 +53,29 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
 
     // Send prictable.csv
     app.get('/getPriceTable', (req, res) => {
-        console.log('API hit...');
-        res.sendFile(priceTable);
-    })
-
+            console.log('API hit...');
+            res.sendFile(priceTable);
+        })
+        // Weather API request if browser navigation is enabled
     app.post('/getGeoWeather', (req, res) => {
-        let lat = 40.0519037;
-        let lon = -74.1768297;
-        // let lat = req.body.coords.latitude;
-        // let lon = req.body.coors.logitude;
+            let lat = 40.0519037;
+            let lon = -74.1768297;
+            console.log(JSON.stringify(req.body));
+            // let lat = req.body.coords.latitude;
+            // let lon = req.body.coors.logitude;
+            const APIKey = keys.weatherAPI;
+            fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
+                .then(response => response.json())
+                .then(data => res.send(data))
+                .catch(err => console.log(err));
+            console.log('Weather Sent...');
+        })
+        // Weather API request if browser navigation is disabled
+    app.post('/getZipWeather', (req, res) => {
+        let zip = req.body.zip;
+        console.log(zip);
         const APIKey = keys.weatherAPI;
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&APPID=${APIKey}`)
             .then(response => response.json())
             .then(data => res.send(data))
             .catch(err => console.log(err));
