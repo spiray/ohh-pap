@@ -75,7 +75,6 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
             .then(response => response.json())
             .then(data => res.send(data))
             .catch(err => console.log(err));
-        console.log('Weather Sent...');
     })
 
     app.post('/emailContactForm', (req, res) => {
