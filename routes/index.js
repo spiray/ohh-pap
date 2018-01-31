@@ -17,30 +17,38 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
 
     //Home Route
     app.get('/', (req, res) => {
-        res.render('home');
-    });
-    app.get('/index.html', (req, res) => {
-        res.render('home');
+        res.render('home', {
+            title: 'OHH Apps'
+        });
     });
 
     //Calc Route
     app.get('/calc', (req, res) => {
-        res.render('calc');
+        res.render('calc', {
+            title: 'PAP Calculator'
+        });
     });
 
     //Pricelist route
     app.get('/price-list', (req, res) => {
-        res.render('price-list');
+        res.render('price-list', {
+            title: 'PAP Supply Pricing'
+        });
     });
 
     //Reports route
     app.get('/prod-reports', (req, res) => {
-        res.render('prod-reports');
+        res.render('prod-reports', {
+            title: 'Productivity Reports'
+        });
     });
 
     //Location Pars route
     app.get('/location-pars', (req, res) => {
-        res.render('location-pars');
+        res.render('location-pars', {
+            class: 'map',
+            title: 'Location Pars'
+        });
     });
 
     //Send prictable.csv
