@@ -1,6 +1,5 @@
 //Declare global variables
 let dateValue,
-    priceData,
     priceTableH,
     tableRow,
     todayIs,
@@ -10,26 +9,15 @@ let dateValue,
     currentZip,
     zipSearch,
     resultLoc,
-    APIKey,
     resultCard,
-    socket;
+    priceData;
 
 function preload() {
     console.time('preload');
+
     //Preload price table csv.
     priceTableH = select("#pricetable");
     if (priceTableH) {
-        // fetch('/getPriceTable')
-        //     .then(response => response.text())
-        //     .then(data => {
-        //         priceData = data => {
-        //             let rows = data.split('\n');
-        //             return rows.map(row => {
-        //                 return row.split(',');
-        //             });
-        //         };
-        //     })
-        //     .catch(err => console.log(err));
         priceData = loadTable('..\\data\\pricetable.csv', 'csv', 'header');
     }
     //Preload Branch Listing data into variable. 
@@ -39,6 +27,7 @@ function preload() {
     }
     console.timeEnd('preload');
 }
+
 
 function setup() {
     console.time('setup');
@@ -62,7 +51,7 @@ function setup() {
     getTime();
     setInterval(getTime, 1000 * 1);
 
-    // Load Price list data and load it into the HTML tableRow. 
+    // /Load Price list data and load it into the HTML tableRow.
     if (priceTableH && priceData.columns[0] == 'id') {
         loadPriceTable(priceTableH);
     }
@@ -71,7 +60,7 @@ function setup() {
     geoLocation();
     setInterval(geoLocation, 1000 * 60 * 30);
 
-    //Functionality and event listeners for the calculator. 
+    //Functionality and event listeners for the calculator.
     if (placeholderJson) {
         let posts = '';
         fetch('https://jsonplaceholder.typicode.com/posts')
@@ -269,12 +258,16 @@ const getWeather = position => {
 
 //Func to loop through a column in a csv file and return the corresponding Location if found. 
 const branchSearch = () => {
-    for (row of branchListing.rows) {
-        if (row.arr[2] == zipSearch.value()) {
-            resultLoc.html(row.arr[3]);
-            break;
-        } else {
-            resultLoc.html('Location not found...');
+    if (zipSearch.value().length !== 5) {
+        resultLoc.html('Enter 5 digit zip code.')
+    } else {
+        for (row of branchListing.rows) {
+            if (row.arr[2] == zipSearch.value()) {
+                resultLoc.html(row.arr[3]);
+                break;
+            } else {
+                resultLoc.html('Location not found...');
+            }
         }
     }
 }

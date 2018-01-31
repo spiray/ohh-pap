@@ -54,7 +54,7 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
     // Send prictable.csv
     app.get('/getPriceTable', (req, res) => {
             console.log('API hit...');
-            res.sendFile(priceTable);
+            res.send(path.join('../data/pricetable.csv'));
         })
         // Weather API request if browser navigation is enabled
     app.post('/getGeoWeather', (req, res) => {
