@@ -1,7 +1,7 @@
-//Global route handling
+// Global route handling
 module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
 
-    //Configure mailer
+    // Configure mailer
     let transporter = nodemailer.createTransport({
         host: "smtp-mail.outlook.com",
         secureConnection: false,
@@ -15,35 +15,35 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
         }
     });
 
-    //Home Route
+    // Home Route
     app.get('/', (req, res) => {
         res.render('home', {
             title: 'OHH Apps'
         });
     });
 
-    //Calc Route
+    // Calc Route
     app.get('/calc', (req, res) => {
         res.render('calc', {
             title: 'PAP Calculator'
         });
     });
 
-    //Pricelist route
+    // Pricelist route
     app.get('/price-list', (req, res) => {
         res.render('price-list', {
             title: 'PAP Supply Pricing'
         });
     });
 
-    //Reports route
+    // Reports route
     app.get('/prod-reports', (req, res) => {
         res.render('prod-reports', {
             title: 'Productivity Reports'
         });
     });
 
-    //Location Pars route
+    // Location Pars route
     app.get('/location-pars', (req, res) => {
         res.render('location-pars', {
             class: 'map',
@@ -51,7 +51,7 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
         });
     });
 
-    //Send prictable.csv
+    // Send prictable.csv
     app.get('/getPriceTable', (req, res) => {
         console.log('API hit...');
         res.sendFile(priceTable);

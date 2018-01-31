@@ -1,4 +1,4 @@
-//Import modules and init app
+// Import modules and init app
 const express = require('express'),
     exphbs = require('express-handlebars'),
     path = require('path'),
@@ -9,10 +9,10 @@ const express = require('express'),
     fs = require('fs'),
     keys = require('./config/keys');
 
-//Initialize App
+// Initialize App
 const app = express();
 
-//Confirgure environment
+// Confirgure views engine
 app.set('views', `${__dirname}/views`);
 let hbs = exphbs.create({
     defaultLayout: 'main.handlebars',
@@ -21,10 +21,10 @@ let hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-//Deliver static files
+// Deliver static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Configure Body parser to streamline HTTP requests
+// Configure Body parser to streamline HTTP requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -35,7 +35,7 @@ fs.readdirSync('./routes').forEach(file => {
     }
 });
 
-//Set port and listen on that port
+// Set port and listen on that port
 app.set('port', (process.env.PORT || 8877));
 app.listen(app.get('port'), () => {
     console.log(`App is running on port: ${app.get('port')}`);
