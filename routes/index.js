@@ -58,7 +58,6 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
         })
         // Weather API request if browser navigation is enabled
     app.post('/getGeoWeather', (req, res) => {
-            console.log(req.body);
             let lat = req.body.latitude;
             let lon = req.body.longitude;
             const APIKey = keys.weatherAPI;
@@ -71,7 +70,6 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
         // Weather API request if browser navigation is disabled
     app.post('/getZipWeather', (req, res) => {
         let zip = req.body.zip;
-        console.log(zip);
         const APIKey = keys.weatherAPI;
         fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&APPID=${APIKey}`)
             .then(response => response.json())
