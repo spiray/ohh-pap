@@ -43,18 +43,18 @@ function preload() {
 function setup() {
     console.time('setup');
     //Set variables
-    const addToDate = select('#addToDate');
-    const dateSum = select('#dateSum');
-    const dateInput = select('#dateInput');
-    const dateInput2 = select('#dateInput2');
-    const dateInput3 = select('#dateInput3');
-    const dateInput4 = select('#dateInput4');
-    const findLoc = select('.findLoc');
-    const copyBtn = select('#copyToClip');
-    const locationDisplay = select('#locationDisplay');
-    const getWeather = select('#getWeather');
-    const contactSubmit = select('#contact-submit');
-    const placeholderJson = select('#placeholder-json');
+    const addToDate = select('#addToDate'),
+        dateSum = select('#dateSum'),
+        dateInput = select('#dateInput'),
+        dateInput2 = select('#dateInput2'),
+        dateInput3 = select('#dateInput3'),
+        dateInput4 = select('#dateInput4'),
+        findLoc = select('.findLoc'),
+        copyBtn = select('#copyToClip'),
+        locationDisplay = select('#locationDisplay'),
+        getWeather = select('#getWeather'),
+        contactSubmit = select('#contact-submit'),
+        placeholderJson = select('#placeholder-json');
     zipSearch = select('.search');
     resultLoc = select('#resultLoc');
 
