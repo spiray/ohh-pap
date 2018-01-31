@@ -58,11 +58,9 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
         })
         // Weather API request if browser navigation is enabled
     app.post('/getGeoWeather', (req, res) => {
-            let lat = 40.0519037;
-            let lon = -74.1768297;
-            console.log(JSON.stringify(req.body));
-            // let lat = req.body.coords.latitude;
-            // let lon = req.body.coors.logitude;
+            console.log(req.body);
+            let lat = req.body.latitude;
+            let lon = req.body.longitude;
             const APIKey = keys.weatherAPI;
             fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
                 .then(response => response.json())

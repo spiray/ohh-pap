@@ -216,36 +216,37 @@ const loadPriceTable = (tableForLoop) => {
 
 //Function to test if browser supports geolocation and call Open Weather Map to get local weather or user entered location weather.
 const geoLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(getWeather);
-        } else {
-            while (true) {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getWeather);
+    } else {
+        while (true) {
+            currentZip = prompt('Please enter your zip code.');
+            if (currentZip.length == 5) {
+                break;
+            } else {
                 currentZip = prompt('Please enter your zip code.');
-                if (currentZip.length == 5) {
-                    break;
-                } else {
-                    currentZip = prompt('Please enter your zip code.');
-                }
             }
-            fetch('getZipWeather', {
-                    method: 'POST',
-                    headers: {
-                        "Accept": "*/*",
-                        "Content-type": "application/json"
-                    },
-                    body: JSON.stringify({ zip: currentZip })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
-            <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
-                })
         }
+        fetch('getZipWeather', {
+                method: 'POST',
+                headers: {
+                    "Accept": "*/*",
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({ zip: currentZip })
+            })
+            .then(response => response.json())
+            .then(data => {
+                locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
+            <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
+            })
     }
-    //Callback func to call OpenWeatherMap for weather at given lon & lat.
+}
+
+//Callback func to call OpenWeatherMap for weather at given lon & lat.
 const getWeather = position => {
-    let geoPosition = position;
-    console.log(geoPosition);
+    let geoCoords = position.coords;
+
     //POST request to server side GET request.
     fetch('/getGeoWeather', {
             method: 'POST',
@@ -253,7 +254,10 @@ const getWeather = position => {
                 "Accept": "*/*",
                 "Content-type": "application/json"
             },
-            body: JSON.stringify(geoPosition)
+            body: JSON.stringify({
+                latitude: geoCoords.latitude,
+                longitude: geoCoords.longitude
+            })
         })
         .then(response => response.json())
         .then(data => {
