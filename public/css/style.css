@@ -53,7 +53,7 @@ body {
 }
 
 .map {
-    background-image: url("images/map.jpg");
+    background-image: url("../images/map.jpg");
     background-position: center;
     background-size: cover;
 }
