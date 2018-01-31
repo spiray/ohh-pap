@@ -1,0 +1,141 @@
+{{> _navbar-std}}
+<div class="container text-muted font-weight-bold calc-cards">
+    <form>
+        <div class="form-group firstSection">
+            <div class="card-block rounded">
+                <div class="card-header pb-1">
+                    <h2 class="">
+                        <i class="fa fa-calculator text-primary" aria-hidden="true"></i> Add Days to Date</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <label for="dateInput" class="col-md-1 col-form-label">Date:</label>
+                        <div class="col-md-3">
+                            <input type="date" id="dateInput" class="date form-control"></input>
+                        </div>
+                        <label for="addToDate" class="col-form-label col-md-1"> + </label>
+                        <div class="col-md-2">
+                            <input type="text" id="addToDate" class="form-control"></input>
+                        </div>
+                        <label for="dateSum" class=" col-md-1 col-form-label"> = </label>
+                        <div class="col">
+                            <input type="text" id="dateSum" class="form-control" readonly></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form>
+        <div class="form-group pt-2">
+            <div class="card-block rounded">
+                <div class="card-header pb-1">
+                    <h2 class="">
+                        <i class="fa fa-plus-square-o text-primary" aria-hidden="true"></i> Figure Out Title</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row pb-3">
+                        <label class="col-md-1 col-form-label" for="dateInput2">Date:</label>
+                        <div class="col">
+                            <input type="date" id="dateInput2" class="date form-control"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="col-md-1 col-form-label" for="Day30">Day 30:</label>
+                            <div class="col-md-3">
+                                <input type="text" id="Day30" class="form-control" value="" readonly></input>
+                            </div>
+                            <label class="col-md-1 col-form-label" for="Day60">Day 60:</label>
+                            <div class="col-md-3">
+                                <input type="text" id="Day60" class="form-control" value="" readonly></input>
+                            </div>
+                            <label class="col-md-1 col-form-label" for="Day90">Day 90:</label>
+                            <div class="col-md-3">
+                                <input type="text" id="Day90" class="form-control" value="" readonly></input>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <label class="col-form-label ml-3" for="Day120">Day 120:</label>
+                            <div class="col-md-5">
+                                <input type="text" id="Day120" class="form-control ml-2" value="" readonly></input>
+                            </div>
+                            <label class=" col-form-label ml-4" for="Day150">Day 150:</label>
+                            <div class="col-md-5">
+                                <input type="text" id="Day150" class="form-control ml-2" value="" readonly></input>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <label class="col-md-1 col-form-label" for="Day45">Day 45:</label>
+                            <div class="col-md-5">
+                                <input type="text" id="Day45" class="form-control" value="" readonly></input>
+                            </div>
+                            <label class="col-md-1 col-form-label" for="Day83">Day 83:</label>
+                            <div class="col-md-5">
+                                <input type="text" id="Day83" class="form-control" value="" readonly></input>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <label class="col-md-1 col-form-label" for="Day31">Day 31:</label>
+                            <div class="col-md-5">
+                                <input type="text" id="Day31" class="form-control" value="" readonly></input>
+                            </div>
+                            <label class="col-md-1 col-form-label" for="Day91">Day 91:</label>
+                            <div class="col-md-5">
+                                <input type="text" id="Day91" class="form-control" value="" readonly></input>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <label class="col-form-label ml-3" for="DaysSince">Days Since:</label>
+                            <div class="col-md-4">
+                                <input type="text" id="DaysSince" class="form-control" value="" readonly></input>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <label class="col-form-label ml-2" for="Month15">Month 15:</label>
+                            <div class="col-md-4">
+                                <input type="text" id="Month15" class="form-control ml-2" value="" readonly></input>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- <div class="row">
+            <div class="col-md-12 text-center">
+                <label class="col-form-label h4"><strong>Or:</strong></label>
+            </div>
+        </div> -->
+    <form>
+        <div class="form-group pt-2">
+            <div class="card-block rounded">
+                <div class="card-header pb-1">
+                    <h2 class="">
+                        <i class="fa fa-calendar-plus-o text-primary" aria-hidden="true"></i> PAR Calculator</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <label class="col-md-2 col-form-label" for="dateInput3">PAR Start Date:</label>
+                        <div class="col-md-4">
+                            <input type="date" id="dateInput3" class="form-control"></input>
+                        </div>
+                        <label class="col-md-2 col-form-label" for="dateInput3">PAR End Date:</label>
+                        <div class="col-md-4">
+                            <input type="date" id="dateInput4" class="form-control"></input>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3"> </div>
+                        <label class=" col-md-2 col-form-label" for="Months">Months Between:</label>
+                        <div class="col-md-4">
+                            <input type="text" id="Months" class="form-control" value="" readonly></input>
+                        </div>
+                        <div class="col-md-3"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{{> _modal}} {{> _footer}}

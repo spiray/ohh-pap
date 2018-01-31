@@ -1,40 +1,31 @@
 //Global route handling
 module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
 
-    //Declare variables
-    const home = path.join(__dirname, '../index.html'),
-        calc = path.join(__dirname, '../html/calc.html'),
-        priceList = path.join(__dirname, '../html/PriceList.html'),
-        reports = path.join(__dirname, '../html/ProductivityReports.html'),
-        locationPars = path.join(__dirname, '../html/LocationPars.html'),
-        priceTable = path.join(__dirname, '../public/data/pricetable.csv'),
-        branchTable = path.join(__dirname, '../public/data/branchListing.csv');
-
     //Home Route
     app.get('/', (req, res) => {
         res.render('home');
     });
     app.get('/index.html', (req, res) => {
-        res.sendFile(home);
+        res.render('home');
     });
 
     //Calc Route
-    app.get('/html/calc.html', (req, res) => {
-        res.sendFile(calc);
+    app.get('/calc', (req, res) => {
+        res.render('calc');
     });
 
     //Pricelist route
-    app.get('/html/PriceList.html', (req, res) => {
-        res.sendFile(priceList);
+    app.get('/price-list', (req, res) => {
+        res.render('price-list');
     });
 
     //Reports route
-    app.get('/html/ProductivityReports.html', (req, res) => {
-        res.sendFile(reports);
+    app.get('/prod-reports', (req, res) => {
+        res.render('prod-reports');
     });
 
     //Location Pars route
-    app.get('/html/LocationPars.html', (req, res) => {
+    app.get('/location-pars', (req, res) => {
         res.sendFile(locationPars);
     });
 

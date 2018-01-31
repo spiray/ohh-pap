@@ -1,0 +1,92 @@
+{{> _navbar-std}}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <iframe class="ProdReport" src="https://app.powerbi.com/view?r=eyJrIjoiYWY5MjM2MjQtNGNhOC00MDQwLWFmZDctNjRkYjFjNWU2MWQzIiwidCI6IjFkZGJiOGYyLTE3OTAtNGYzNS1hYjU1LTU0NDY1Y2UwYTljYyIsImMiOjF9"
+                frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <div id="comments" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#comments" data-slide-to="0" class="active"></li>
+                    <li data-target="#comments" data-slide-to="1"></li>
+                    <li data-target="#comments" data-slide-to="2"></li>
+                </ul>
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
+                        <div class="carousel-caption text-primary">
+                            <h2> PAP New Starts: </h2>
+                            <br>
+                            <p id="NSMessage"></p>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
+                        <div class="carousel-caption text-primary">
+                            <h2>PAP Resupply:</h2>
+                            <br>
+                            <p id="resMessage"></p>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
+                        <div class="carousel-caption text-primary">
+                            <h2>PAP Compliance:</h2>
+                            <br>
+                            <p id="compMessage"></p>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
+                        <div class="carousel-caption text-primary">
+                            <h2>PAP Scheduling:</h2>
+                            <br>
+                            <p id="schedMessage"></p>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
+                        <div class="carousel-caption text-primary">
+                            <h2>PAP NS Phones:</h2>
+                            <br>
+                            <p id="phoneMessage"></p>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#comments" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#comments" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{{> _modal}}{{> _footer}}

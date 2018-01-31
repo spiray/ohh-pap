@@ -1,0 +1,29 @@
+{{> _navbar-std}}
+<div class="container-fluid">
+    <div class="row pt-4">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <iframe class="locationReport" src='https://oceanhomehealth-my.sharepoint.com/personal/joseph_oceanhomehealth_com/_layouts/15/WopiFrame.aspx?sourcedoc={db1baf0d-f79b-472e-ba4c-c7879a4bf213}&action=embedview&wdStartOn=1&wdEmbedCode=0&wdPrint=0'
+                width='100%' height='650px' frameborder='0'>This is an embedded
+                <a target='_blank' href='https://office.com'>Microsoft Office</a> document, powered by
+                <a target='_blank' href='https://office.com/webapps'>Office Online</a>.</iframe>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group form-inline">
+                <input type="text" class="search form-control" placeholder="Enter Zip Code..." />
+                <button type="button" class="btn btn-primary findLoc form-control ml-2">
+                    <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            </div>
+            <div class="card mt-2">
+                <div class="card-body">
+                    <h3 class="card-title">Location:</h3>
+                    <p class="card-text" id="resultLoc">Enter Zip Code Above.</p>
+                    <a href="#" class="btn btn-primary" id="copyToClip" data-clipboard-action="copy" data-clipboard-target="#resultLoc">
+                        <i class="fa fa-clipboard" aria-hidden="true"></i> Copy Location</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+{{> _modal}}{{> _footer}}
