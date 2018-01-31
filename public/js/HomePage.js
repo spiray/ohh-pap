@@ -18,12 +18,12 @@ function preload() {
     //Preload price table csv.
     priceTableH = select("#pricetable");
     if (priceTableH) {
-        priceData = loadTable('..\\data\\pricetable.csv', 'csv', 'header');
+        priceData = loadTable('../data/pricetable.csv', 'csv', 'header');
     }
     //Preload Branch Listing data into variable. 
     resultCard = select('.card');
     if (resultCard) {
-        branchListing = loadTable('..\\data\\branchListing.csv', 'csv', 'header');
+        branchListing = loadTable('../data/branchListing.csv', 'csv', 'header');
     }
     console.timeEnd('preload');
 }
@@ -216,7 +216,7 @@ const geoLocation = () => {
                 currentZip = prompt('Please enter your zip code.');
             }
         }
-        fetch('getZipWeather', {
+        fetch('/getZipWeather', {
                 method: 'POST',
                 headers: {
                     "Accept": "*/*",
