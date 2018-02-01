@@ -1,4 +1,4 @@
-//Declare global variables
+//  Declare global variables
 let dateValue,
     priceTableH,
     tableRow,
@@ -15,12 +15,12 @@ let dateValue,
 function preload() {
     console.time('preload');
 
-    //Preload price table csv.
+    //   Preload price table csv.
     priceTableH = select("#pricetable");
     if (priceTableH) {
         priceData = loadTable('../data/pricetable.csv', 'csv', 'header');
     }
-    //Preload Branch Listing data into variable. 
+    //  Preload Branch Listing data into variable. 
     resultCard = select('.card');
     if (resultCard) {
         branchListing = loadTable('../data/branchListing.csv', 'csv', 'header');
@@ -31,7 +31,7 @@ function preload() {
 
 function setup() {
     console.time('setup');
-    //Set variables
+    //  Set variables
     const addToDate = select('#addToDate'),
         dateSum = select('#dateSum'),
         dateInput = select('#dateInput'),
@@ -47,20 +47,20 @@ function setup() {
     zipSearch = select('.search');
     resultLoc = select('#resultLoc');
 
-    //Display time and update every second.
+    //  Display time and update every second.
     getTime();
     setInterval(getTime, 1000 * 1);
 
-    // /Load Price list data and load it into the HTML tableRow.
+    //  Load Price list data and load it into the HTML tableRow.
     if (priceTableH && priceData.columns[0] == 'id') {
         loadPriceTable(priceTableH);
     }
 
-    //Display weather and update every 30 seconds.
+    //  Display weather and update every 30 seconds.
     geoLocation();
     setInterval(geoLocation, 1000 * 60 * 30);
 
-    //Functionality and event listeners for the calculator.
+    //  Functionality and event listeners for the calculator.
     if (placeholderJson) {
         let posts = '';
         fetch('https://jsonplaceholder.typicode.com/posts')
@@ -128,7 +128,7 @@ function setup() {
         });
     }
 
-    //Functionality and event listeners for the branch listing. 
+    //  Functionality and event listeners for the branch listing. 
     if (zipSearch) {
         zipSearch.changed(() => {
             branchSearch();
@@ -172,9 +172,9 @@ function setup() {
     }
     console.timeEnd('setup');
 }
-//Functionality
+//  Functionality
 
-//Func to dynamically load item/price table.
+//  Func to dynamically load item/price table.
 const loadPriceTable = (tableForLoop) => {
     let tableHead = createElement('thead');
     let header = `<tr class="table-primary">
@@ -203,23 +203,20 @@ const loadPriceTable = (tableForLoop) => {
     tableBody.parent(tableForLoop);
 }
 
-//Function to test if browser supports geolocation and call Open Weather Map to get local weather or user entered location weather.
+//  Function to test if browser supports geolocation and call Open Weather Map to get local weather or user entered location weather.
 const geoLocation = () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(getWeather);
-    } else {
-        while (true) {
-            if(sessionStorage.getItem('zip')){
-                currentZip = sessionStorage.getItem('zip');
-                break;
-            }else{
-            currentZip = prompt('Please enter your zip code.');
-            }
-            if (currentZip.length == 5) {
-                sessionStorage.setItem('zip',currentZip);
-                break;
-            } else {
+    navigator.geolocation.getCurrentPosition(getWeather, err => {
+        if (sessionStorage.getItem('zip')) {
+            currentZip = sessionStorage.getItem('zip');
+        } else {
+            while (true) {
                 currentZip = prompt('Please enter your zip code.');
+                if (currentZip.length == 5) {
+                    sessionStorage.setItem('zip', currentZip);
+                    break;
+                } else {
+                    currentZip = prompt('Please enter your zip code.');
+                }
             }
         }
         fetch('/getZipWeather', {
@@ -233,16 +230,15 @@ const geoLocation = () => {
             .then(response => response.json())
             .then(data => {
                 locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
-            <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
-            })
-    }
+                    <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
+            });
+    });
 }
 
-//Callback func to call OpenWeatherMap for weather at given lon & lat.
+//  Callback func to call OpenWeatherMap for weather at given lon & lat.
 const getWeather = position => {
     let geoCoords = position.coords;
-
-    //POST request to server side GET request.
+    //  POST request to server side GET request.
     fetch('/getGeoWeather', {
             method: 'POST',
             headers: {
@@ -262,7 +258,7 @@ const getWeather = position => {
         .catch(err => console.log(`API Error ${err}`));
 }
 
-//Func to loop through a column in a csv file and return the corresponding Location if found. 
+//  Func to loop through a column in a csv file and return the corresponding Location if found. 
 const branchSearch = () => {
     if (zipSearch.value().length !== 5) {
         resultLoc.html('Enter 5 digit zip code.')
@@ -278,13 +274,13 @@ const branchSearch = () => {
     }
 }
 
-//Func to to get day and time. 
+//  Func to to get day and time. 
 const getTime = () => {
     todayIs = select('#todayIs');
     let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let dayOfWeek = weekdays[new Date().getDay()];
-    // let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    // let monthName = months[month()];
+    //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    //   let monthName = months[month()];
     let hr,
         mn,
         scnd,
