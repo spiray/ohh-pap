@@ -9,6 +9,10 @@ body {
     height: 470px;
 }
 
+.nav-i {
+    color: #13818D;
+}
+
 .results tr[visible='false'],
 .no-result {
     display: none;
