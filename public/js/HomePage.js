@@ -209,8 +209,14 @@ const geoLocation = () => {
         navigator.geolocation.getCurrentPosition(getWeather);
     } else {
         while (true) {
+            if(sessionStorage.getItem('zip')){
+                currentZip = sessionStorage.getItem('zip');
+                break;
+            }else{
             currentZip = prompt('Please enter your zip code.');
+            }
             if (currentZip.length == 5) {
+                sessionStorage.setItem('zip',currentZip);
                 break;
             } else {
                 currentZip = prompt('Please enter your zip code.');
