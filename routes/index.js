@@ -65,7 +65,6 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
                 .then(response => response.json())
                 .then(data => res.send(data))
                 .catch(err => console.log(err));
-            console.log('Weather Sent...');
         })
         // Weather API request if browser navigation is disabled
     app.post('/getZipWeather', (req, res) => {
@@ -78,7 +77,6 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
     })
 
     app.post('/emailContactForm', (req, res) => {
-        console.log(req.body);
         let mailOptions = {
             from: `<joseph@oceanhomehealth.com>`,
             to: '<joseph@oceanhomehealth.com>',
@@ -86,12 +84,10 @@ module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
             html: `${req.body.body}</br>${req.body.name}`
         };
 
-
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 return console.log(error);
             }
-            console.log(`Message Sent: ${info.response}`);
         })
         res.send('Email Sent...')
     })
