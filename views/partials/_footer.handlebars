@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-md bg-primary navbar-dark">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="btn btn-info copyright disabled" href="#" title="Copyright">
+                <a class="btn btn-info copyright" href="#" title="Copyright" aria-disabled="true">
                     <span class="copy-text">
                         <i class="fa fa-copyright" aria-hidden="true"></i> Joseph Spira 2017</span>
                 </a>
@@ -27,7 +27,9 @@
                     </li>
                 </ul>
             </div>
-            <span class="navbar-text" id="todayIs"></span>
+            <a href="#" class="btn btn-info" aria-disabled="true">
+                <span class="navbar-text" id="todayIs"></span>
+            </a>
         </div>
     </nav>
 </footer>
