@@ -99,3 +99,9 @@ body {
 .copy-text {
     opacity: 0.4;
 }
+
+.popover {
+    background: #007bff;
+    color: white;
+    height: 4%;
+}

@@ -141,9 +141,7 @@ function setup() {
     }
     if (copyBtn) {
         new Clipboard('#copyToClip');
-        copyBtn.mouseClicked(() => {
-            console.log('Copied...');
-        })
+        copyBtn.mouseClicked(() => {});
     }
     CKEDITOR.replace('contactBody');
     if (contactSubmit) {
@@ -177,7 +175,7 @@ function setup() {
 //  Func to dynamically load item/price table.
 const loadPriceTable = (tableForLoop) => {
     let tableHead = createElement('thead');
-    let header = `<tr class="table-primary">
+    let header = `<tr class="bg-primary">
                     <th>${priceData.columns[0]}</th>
                     <th>${priceData.columns[1]}</th>
                     <th>${priceData.columns[2]}</th>
