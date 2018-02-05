@@ -7,10 +7,7 @@ Web Application for work
 # Install dependencies
 npm install
 
-# Run tests
-npm test
-
-# Start
+# Run tests and start application
 npm start
 ```
 
