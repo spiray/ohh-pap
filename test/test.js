@@ -1,5 +1,5 @@
 const assert = require('chai').assert,
-    main = require('../public/js/HomePage');
+    { priceData, branchlisting, dateSum } = require('../public/js/HomePage');
 
 // describe('Table tests', () => {
 //     it('Price Table is an array', () => {
@@ -8,6 +8,6 @@ const assert = require('chai').assert,
 // });
 describe('Does variable exist', () => {
     it('dateSum is defined', () => {
-        assert.isDefined(main.dateSum);
+        assert.isDefined(dateSum);
     })
 });
