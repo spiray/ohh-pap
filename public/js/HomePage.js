@@ -307,6 +307,7 @@ const getTime = () => {
 
 // Export variable for testing
 module.exports = {
-    priceData: priceData,
-    branchListing: branchListing
+    priceData,
+    branchListing,
+    dateSum
 };
