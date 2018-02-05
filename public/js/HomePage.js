@@ -1,5 +1,7 @@
+'use strict';
+
 // Import internal functions
-// import { loadPriceTable, geoLocation, getWeather, branchSearch, getTime } from './mainFunc';
+import { loadPriceTable, geoLocation, getWeather, branchSearch, getTime } from './mainFunc.js';
 
 //  Declare global variables
 let dateValue,
