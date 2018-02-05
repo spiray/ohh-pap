@@ -304,3 +304,9 @@ const getTime = () => {
     }
     todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
 }
+
+// Export variable for testing
+module.exports = {
+    priceData: priceData,
+    branchListing: branchListing
+};

@@ -133,3 +133,4 @@ const getTime = () => {
         todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
     }
     // export { loadPriceTable, geoLocation, getWeather, branchSearch, getTime };
+module.exports = getTime;
