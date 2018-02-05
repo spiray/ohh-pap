@@ -1,94 +1,99 @@
-// Global route handling
-module.exports = (app, nodemailer, path, fetch, keys, exphbs) => {
+const express = require('express'),
+    exphbs = require('express-handlebars'),
+    nodemailer = require('nodemailer'),
+    keys = require('../config/keys'),
+    bodyParser = require('body-parser'),
+    fetch = require('node-fetch'),
+    router = express.Router();
 
-    // Configure mailer
-    let transporter = nodemailer.createTransport({
-        host: "smtp-mail.outlook.com",
-        secureConnection: false,
-        port: 587,
-        auth: {
-            user: "joseph@oceanhomehealth.com",
-            pass: keys.emailPass
-        },
-        tls: {
-            ciphers: 'SSLv3'
-        }
+// Configure mailer
+let transporter = nodemailer.createTransport({
+    host: "smtp-mail.outlook.com",
+    secureConnection: false,
+    port: 587,
+    auth: {
+        user: "joseph@oceanhomehealth.com",
+        pass: keys.emailPass
+    },
+    tls: {
+        ciphers: 'SSLv3'
+    }
+});
+// Home Route
+router.get('/', (req, res) => {
+    res.render('home', {
+        title: 'OHH Apps'
     });
+});
 
-    // Home Route
-    app.get('/', (req, res) => {
-        res.render('home', {
-            title: 'OHH Apps'
-        });
+// Calc Route
+router.get('/calc', (req, res) => {
+    res.render('calc', {
+        title: 'PAP Calculator'
     });
+});
 
-    // Calc Route
-    app.get('/calc', (req, res) => {
-        res.render('calc', {
-            title: 'PAP Calculator'
-        });
+// Pricelist route
+router.get('/price-list', (req, res) => {
+    res.render('price-list', {
+        title: 'PAP Supply Pricing'
     });
+});
 
-    // Pricelist route
-    app.get('/price-list', (req, res) => {
-        res.render('price-list', {
-            title: 'PAP Supply Pricing'
-        });
+// Reports route
+router.get('/prod-reports', (req, res) => {
+    res.render('prod-reports', {
+        title: 'Productivity Reports'
     });
+});
 
-    // Reports route
-    app.get('/prod-reports', (req, res) => {
-        res.render('prod-reports', {
-            title: 'Productivity Reports'
-        });
+// Location Pars route
+router.get('/location-pars', (req, res) => {
+    res.render('location-pars', {
+        class: 'map',
+        title: 'Location Pars'
     });
+});
 
-    // Location Pars route
-    app.get('/location-pars', (req, res) => {
-        res.render('location-pars', {
-            class: 'map',
-            title: 'Location Pars'
-        });
-    });
-
-    // Send prictable.csv
-    app.get('/getPriceTable', (req, res) => {
-            console.log('API hit...');
-            res.send(path.join('../data/pricetable.csv'));
-        })
-        // Weather API request if browser navigation is enabled
-    app.post('/getGeoWeather', (req, res) => {
-            let lat = req.body.latitude;
-            let lon = req.body.longitude;
-            const APIKey = keys.weatherAPI;
-            fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
-                .then(response => response.json())
-                .then(data => res.send(data))
-                .catch(err => console.log(err));
-        })
-        // Weather API request if browser navigation is disabled
-    app.post('/getZipWeather', (req, res) => {
-        let zip = req.body.zip;
+// Send prictable.csv
+router.get('/getPriceTable', (req, res) => {
+        console.log('API hit...');
+        res.send(path.join('../data/pricetable.csv'));
+    })
+    // Weather API request if browser navigation is enabled
+router.post('/getGeoWeather', (req, res) => {
+        let lat = req.body.latitude;
+        let lon = req.body.longitude;
         const APIKey = keys.weatherAPI;
-        fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&APPID=${APIKey}`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
             .then(response => response.json())
             .then(data => res.send(data))
             .catch(err => console.log(err));
     })
+    // Weather API request if browser navigation is disabled
+router.post('/getZipWeather', (req, res) => {
+    let zip = req.body.zip;
+    const APIKey = keys.weatherAPI;
+    fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&APPID=${APIKey}`)
+        .then(response => response.json())
+        .then(data => res.send(data))
+        .catch(err => console.log(err));
+})
 
-    app.post('/emailContactForm', (req, res) => {
-        let mailOptions = {
-            from: `<joseph@oceanhomehealth.com>`,
-            to: '<joseph@oceanhomehealth.com>',
-            subject: `${req.body.name} - ${req.body.subject}`,
-            html: `${req.body.body}</br>${req.body.name}`
-        };
+router.post('/emailContactForm', (req, res) => {
+    let mailOptions = {
+        from: `<joseph@oceanhomehealth.com>`,
+        to: '<joseph@oceanhomehealth.com>',
+        subject: `${req.body.name} - ${req.body.subject}`,
+        html: `${req.body.body}</br>${req.body.name}`
+    };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
-            }
-        })
-        res.send('Email Sent...')
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
     })
-}
+    res.send('Email Sent...')
+})
+
+module.exports = router;

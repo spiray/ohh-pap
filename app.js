@@ -12,10 +12,13 @@ const express = require('express'),
 // Initialize App
 const app = express();
 
+// Load routes
+const routes = require('./routes/index');
+
 // Confirgure views engine
 app.set('views', `${__dirname}/views`);
 let hbs = exphbs.create({
-    defaultLayout: 'main.handlebars',
+    defaultLayout: 'main',
     layoutsDir: `${__dirname}/views/layouts`
 });
 app.engine('handlebars', hbs.engine);
@@ -28,12 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Dynamically include routes
-fs.readdirSync('./routes').forEach(file => {
-    if (file == 'index.js') {
-        require(`./routes/${file}`)(app, nodemailer, path, fetch, keys, exphbs);
-    }
-});
+// Use routes
+app.use(routes);
 
 // Set port and listen on that port
 app.set('port', (process.env.PORT || 8877));
