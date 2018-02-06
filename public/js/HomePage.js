@@ -1,7 +1,7 @@
 'use strict';
 
 // Import internal functions
-import { loadPriceTable, geoLocation, getWeather, branchSearch, getTime } from './mainFunc.js';
+// import { loadPriceTable, geoLocation, getWeather, branchSearch, getTime } from './mainFunc.js';
 
 //  Declare global variables
 let dateValue,
@@ -70,7 +70,7 @@ function setup() {
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then(response => response.json())
             .then(data => {
-                for (post of data) {
+                for (let post of data) {
                     posts += post.body;
                 }
                 placeholderJson.html(posts)
@@ -308,8 +308,8 @@ const getTime = () => {
 }
 
 // Export variable for testing
-module.exports = {
-    priceData: priceData,
-    branchlisting: branchListing,
-    dateSum: dateSum
-};
+// module.exports = {
+//     priceData: priceData,
+//     branchlisting: branchListing,
+//     dateSum: dateSum
+// };

@@ -102,35 +102,35 @@ const branchSearch = () => {
 
 //  Func to to get day and time. 
 const getTime = () => {
-    todayIs = select('#todayIs');
-    let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let dayOfWeek = weekdays[new Date().getDay()];
-    //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    //   let monthName = months[month()];
-    let hr,
-        mn,
-        scnd,
-        time;
-    if (hour() > 12) {
-        hr = hour() - 12
-    } else {
-        hr = hour()
+        todayIs = select('#todayIs');
+        let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let dayOfWeek = weekdays[new Date().getDay()];
+        //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        //   let monthName = months[month()];
+        let hr,
+            mn,
+            scnd,
+            time;
+        if (hour() > 12) {
+            hr = hour() - 12
+        } else {
+            hr = hour()
+        }
+        if (minute() < 10) {
+            mn = `0${minute()}`;
+        } else {
+            mn = minute();
+        }
+        if (second() < 10) {
+            scnd = `0${second()}`;
+        } else {
+            scnd = second();
+        }
+        if (hour() > 11) {
+            time = `${hr}:${mn}:${scnd} PM`;
+        } else {
+            time = `${hr}:${mn}:${scnd} AM`;
+        }
+        todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
     }
-    if (minute() < 10) {
-        mn = `0${minute()}`;
-    } else {
-        mn = minute();
-    }
-    if (second() < 10) {
-        scnd = `0${second()}`;
-    } else {
-        scnd = second();
-    }
-    if (hour() > 11) {
-        time = `${hr}:${mn}:${scnd} PM`;
-    } else {
-        time = `${hr}:${mn}:${scnd} AM`;
-    }
-    todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
-}
-export { loadPriceTable, geoLocation, getWeather, branchSearch, getTime };
+    // export { loadPriceTable, geoLocation, getWeather, branchSearch, getTime };
