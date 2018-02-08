@@ -169,7 +169,7 @@ function setup() {
                     body: JSON.stringify(email)
                 })
                 .then(response => response.text())
-                .then(data => alert(data));
+                .then(data => data);
         })
     }
     console.timeEnd('setup');
