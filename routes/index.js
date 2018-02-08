@@ -73,7 +73,7 @@ router.post('/getGeoWeather', (req, res) => {
     // Weather API request if browser navigation is disabled
 router.post('/getZipWeather', (req, res) => {
     let zip = req.body.zip;
-    const APIKey = keys.weatherAPI;
+    const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7'; //keys.weatherAPI;
     fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&APPID=${APIKey}`)
         .then(response => response.json())
         .then(data => res.send(data))
