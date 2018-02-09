@@ -18,24 +18,20 @@ let dateValue,
     priceData;
 
 function preload() {
-    console.time('preload');
-
     //   Preload price table csv.
     priceTableH = select("#pricetable");
     if (priceTableH) {
-        priceData = loadTable('../data/pricetable.csv', 'csv', 'header');
+        priceData = loadTable('data/pricetable.csv', 'csv', 'header');
     }
     //  Preload Branch Listing data into variable. 
     resultCard = select('.card');
     if (resultCard) {
-        branchListing = loadTable('../data/branchListing.csv', 'csv', 'header');
+        branchListing = loadTable('data/branchListing.csv', 'csv', 'header');
     }
-    console.timeEnd('preload');
 }
 
 
 function setup() {
-    console.time('setup');
     //  Set variables
     const addToDate = select('#addToDate'),
         dateSum = select('#dateSum'),
@@ -172,7 +168,6 @@ function setup() {
                 .then(data => data);
         })
     }
-    console.timeEnd('setup');
 }
 const loadPriceTable = (tableForLoop) => {
     let tableHead = createElement('thead');
