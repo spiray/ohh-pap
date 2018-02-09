@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes);
 
 // Set port and listen on that port
-app.set('port', (process.env.PORT));
+app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'), () => {
     console.log(`App is running on port: ${app.get('port')}`);
 });
