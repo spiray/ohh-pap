@@ -1,54 +1,49 @@
-<nav class="navbar navbar-expand-xl navbar-inverse fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand active" href="/">
-                <img src="..\images\qmeslogo.png" alt="logo" width="111" height="33">
-            </a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="navbar-nav" id="navbar">
-                <li class="nav-item">
-                    <a class="nav-link" href="/calc">
-                        <i class="fa fa-lg fa-calculator nav-i"></i>
-                        PAP Calculator
-                    </a>
-                </li>
-                <li class="nav-item bl-3">
-                    <a class="nav-link" href="https://imanage.qmes.com/imanage/Default.aspx?" target="_blank" rel="noopener">
-                        <i class="fa fa-lg fa-tasks nav-i"></i>
-                        Workflow App
-                    </a>
-                </li>
-                <li class="nav-item bl-3">
-                    <a class="nav-link" href="/price-list">
-                        <i class="fa fa-lg fa-credit-card nav-i"></i>
-                        Supply Price List
-                    </a>
-                </li>
-                <li class="nav-item bl-3">
-                    <a class="nav-link" href="/prod-reports">
-                        <i class="fa fa-lg fa-list-alt nav-i"></i>
-                        Productivity Reports
-                    </a>
-                </li>
-                <li class="nav-item bl-3">
-                    <a class="nav-link" href="/location-pars">
-                        <i class="fa fa-lg fa-location-arrow nav-i"></i>
-                        Location Pars
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav nav ml-md-auto">
-                <li class="navbar-text text-primary weather-design rounded">
-                    <label class="pl-3 pr-3 h5" id="locationDisplay">70 &#8457;</label>
-                </li>
-                {{!-- <li class="navbar-text">
-                    <label id="todayIs"></label>
-                </li> --}}
-            </ul>
-        </div>
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand active" href="/">
+        <img src="..\images\qmeslogo.png" alt="logo" width="111" height="33">
+    </a>
+    {{!--
+    <div class="navbar-header"> --}}
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        {{!-- </div> --}}
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="navbar-nav" id="navbar">
+            <li class="nav-item">
+                <a class="nav-link" href="/calc">
+                    <i class="fa fa-lg fa-calculator nav-i"></i>
+                    PAP Calculator
+                </a>
+            </li>
+            <li class="nav-item bl-3">
+                <a class="nav-link" href="https://imanage.qmes.com/imanage/Default.aspx?" target="_blank" rel="noopener">
+                    <i class="fa fa-lg fa-tasks nav-i"></i>
+                    Workflow App
+                </a>
+            </li>
+            <li class="nav-item bl-3">
+                <a class="nav-link" href="/price-list">
+                    <i class="fa fa-lg fa-credit-card nav-i"></i>
+                    Supply Price List
+                </a>
+            </li>
+            <li class="nav-item bl-3">
+                <a class="nav-link" href="/prod-reports">
+                    <i class="fa fa-lg fa-list-alt nav-i"></i>
+                    Productivity Reports
+                </a>
+            </li>
+            <li class="nav-item bl-3">
+                <a class="nav-link" href="/location-pars">
+                    <i class="fa fa-lg fa-location-arrow nav-i"></i>
+                    Location Pars
+                </a>
+            </li>
+        </ul>
+        <li class="navbar-text text-primary weather-design rounded">
+            <label class="pl-3 pr-3 h5" id="locationDisplay">70 &#8457;</label>
+        </li>
     </div>
 </nav>
