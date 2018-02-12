@@ -25,11 +25,11 @@ body {
 
 .counter {
     padding: 0.75%;
-    color: black;
+    color: #13818D;
 }
 
 #todayIs {
-    font-size: small;
+    /* font-size: small; */
     font-weight: bold;
 }
 
