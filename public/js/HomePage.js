@@ -26,7 +26,7 @@ function preload() {
     //  Preload Branch Listing data into variable. 
     resultCard = select('.card');
     if (resultCard) {
-        branchListing = loadTable('data/branchListing.csv', 'csv', 'header');
+        branchListing = loadTable('data/branchListing.csv', 'csv', 'header', undefined, response => console.log(response));
     }
 }
 
