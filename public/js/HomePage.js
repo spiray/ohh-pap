@@ -171,8 +171,8 @@ function setup() {
 }
 const loadPriceTable = (tableForLoop) => {
     let tableHead = createElement('thead');
-    let header = `<tr class="bg-dark" id="table-header">
-                    <th>${priceData.columns[0]}</th>
+    let header = `<tr class="bg-dark theme-color">
+                    <th>${priceData.columns[0].toUpperCase()}</th>
                     <th>${priceData.columns[1]}</th>
                     <th>${priceData.columns[2]}</th>
                     <th>${priceData.columns[3]}</th>
