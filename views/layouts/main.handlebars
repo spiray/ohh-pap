@@ -5,13 +5,15 @@
     <title>{{title}}</title>
     {{> _head-tags}}
 </head>
-{{#if class}}
+<div class="footer-helper">
+    {{#if class}}
 
-<body class="map">
-    {{else}}
+    <body class="map">
+        {{else}}
 
-    <body>
-        {{/if}} {{> _navbar}} {{{body}}} {{> _modal}} {{> _footer}} {{> _script-tags}}
-    </body>
+        <body>
+            {{/if}} {{> _navbar}} {{{body}}} {{> _modal}} {{> _footer}} {{> _script-tags}}
+        </body>
+</div>
 
 </html>
