@@ -257,7 +257,7 @@ const branchSearch = () => {
     if (zipSearch.value().length !== 5) {
         resultLoc.html('Enter 5 digit zip code.')
     } else {
-        for (row of branchListing.rows) {
+        for (let row of branchListing.rows) {
             if (row.arr[2] == zipSearch.value()) {
                 resultLoc.html(row.arr[3]);
                 break;
