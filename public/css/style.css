@@ -78,10 +78,6 @@ body {
     background-color: lightgray;
 }
 
-#footer-buttons {
-    height: 65%;
-}
-
 .copy-text {
     opacity: 0.4;
 }
@@ -93,10 +89,6 @@ body {
 }
 
 .calc-cards i {
-    color: #13818D;
-}
-
-#table-header {
     color: #13818D;
 }
 
@@ -121,10 +113,15 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    height: 81px;
     color: lightgray;
+    background-color: #343A40;
 }
 
+#footer-buttons {
+    height: 65%;
+}
 
-/* .footer-width {
-    width: 80%;
-} */
+.dis-i {
+    display: inline-block;
+}
