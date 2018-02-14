@@ -20,9 +20,9 @@ $(document).ready(function() {
         })
         let jobCount = $('.results tbody tr[visible="true"]').length;
         if (jobCount != 1) {
-            $('.counter').text(jobCount + ' items');
+            $('.counter').text(`Found ${jobCount} items`);
         } else {
-            $('.counter').text(jobCount + ' item');
+            $('.counter').text(`Found ${jobCount} item`);
         }
         if (jobCount == 0) {
             $('no-result').show();
