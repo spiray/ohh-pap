@@ -105,7 +105,7 @@ function setup() {
                         .calendar());
                 } else if (inTags[i].id() == 'DaysSince') {
                     inTags[i].value((
-                        moment(`${month()}/${day()}/${year()}`)
+                        moment(`${year()}-${month()}-${day()}`)
                         .diff(dateInput2.value(), 'days')));
                 }
             }
