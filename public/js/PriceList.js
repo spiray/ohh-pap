@@ -3,20 +3,6 @@ $(document).ready(function() {
         console.log('Modal Hidden...');
         $('#contact-us').modal('hide');
     })
-    $(function() {
-        $('[data-toggle="popover"]').popover()
-    })
-    $(function() {
-        $('.example-popover').popover({
-            container: 'body'
-        })
-    })
-    $('[data-toggle="popover"][data-timeout]').on('shown.bs.popover', function() {
-        this_popover = $(this);
-        setTimeout(function() {
-            this_popover.popover('hide');
-        }, $(this).data("timeout"));
-    });
     $('.search').keyup(function() {
         let searchTerm = $('.search').val();
         let listItem = $('.results tbody').children('tr');
