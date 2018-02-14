@@ -21,12 +21,12 @@ function preload() {
     //   Preload price table csv.
     priceTableH = select("#pricetable");
     if (priceTableH) {
-        priceData = loadTable('./data/pricetable.csv', 'csv', 'header', undefined, response => console.log(response));
+        priceData = loadTable('./data/pricetable.csv', 'csv', 'header', undefined, response => response);
     }
     //  Preload Branch Listing data into variable. 
     resultCard = select('.card');
     if (resultCard) {
-        branchListing = loadTable('./data/branchListing.csv', 'csv', 'header', undefined, response => console.log(response));
+        branchListing = loadTable('./data/branchListing.csv', 'csv', 'header', undefined, response => response);
     }
 }
 
