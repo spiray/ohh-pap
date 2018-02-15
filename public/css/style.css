@@ -45,7 +45,7 @@ body {
 .map {
     background-image: url("../images/map.jpg");
     background-position: center;
-    background-size: cover;
+    background-size: 100% 100vh;
 }
 
 .copyright {
