@@ -168,6 +168,8 @@ function setup() {
                 .then(data => data);
         })
     }
+    const unwantedCanvas = select('#defaultCanvas0');
+    unwantedCanvas.remove();
 }
 const loadPriceTable = (tableForLoop) => {
     let tableHead = createElement('thead');
