@@ -13,8 +13,7 @@
     "license": "ISC",
     "scripts": {
         "start": "node app.js",
-        "test": "mocha || true",
-        "push": "git push origin master && git push heroku master"
+        "test": "mocha || true"
     },
     "engines": {
         "node": "^8.9.0",
