@@ -144,9 +144,9 @@ hr {
     background-color: #F8F5F5;
 }
 
-.nav-link:focus,
-.nav-link:hover,
-.nav-link.active {
+.custom-border .nav-link:focus,
+.custom-border .nav-link:hover,
+.custom-border .nav-link.active {
     color: white !important;
     background-color: #13818D !important;
 }
