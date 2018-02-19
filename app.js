@@ -6,7 +6,8 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     fetch = require('node-fetch'),
     nodemailer = require('nodemailer'),
-    fs = require('fs');
+    fs = require('fs'),
+    session = require('express-session');
 //keys = require('./config/keys');
 
 // Initialize App

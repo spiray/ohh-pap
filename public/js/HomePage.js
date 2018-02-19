@@ -168,8 +168,46 @@ function setup() {
                 .then(data => data);
         })
     }
+
+    //Remove default canvas
     const unwantedCanvas = select('#defaultCanvas0');
     unwantedCanvas.remove();
+
+    //Set reporting comments greeting
+    const greetingElements = selectAll('.greeting');
+    if (greetingElements) {
+        let greeting;
+        if (hour() < 11) {
+            greeting = 'Good Morning,';
+        } else {
+            greeting = 'Good Afternoon,';
+        }
+        for (let greetingElement of greetingElements) {
+            greetingElement.html(greeting);
+        }
+    }
+
+    const editForm = select('#commentForm');
+    editForm.hide();
+    if (localStorage.getItem('editKey')) {
+        editForm.show();
+        const comments = selectAll('.comments');
+        const saveBtn = select('#save-btn');
+        const forms = selectAll('.comment-form');
+        for (let form of forms) {
+            CKEDITOR.replace(`${form.id()}`);
+        }
+        saveBtn.mouseClicked(() => {
+            //Push comments to db. 
+            comments[0].html(CKEDITOR.instances.nsForm.getData());
+            comments[1].html(CKEDITOR.instances.resForm.getData());
+            comments[2].html(CKEDITOR.instances.compForm.getData());
+            comments[3].html(CKEDITOR.instances.schedForm.getData());
+            comments[4].html(CKEDITOR.instances.phoneForm.getData());
+
+            editForm.hide();
+        })
+    }
 }
 const loadPriceTable = (tableForLoop) => {
     let tableHead = createElement('thead');

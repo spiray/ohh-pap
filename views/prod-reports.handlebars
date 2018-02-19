@@ -5,8 +5,22 @@
                 frameborder="0" allowFullScreen="true"></iframe>
         </div>
     </div>
+    <div class="form-group" id="commentForm">
+        <label for="nsForm">New Starts</label>
+        <textarea id="nsForm" class="form-control comment-form"></textarea>
+        <label for="resForm">Resupply</label>
+        <textarea id="resForm" class="form-control comment-form"></textarea>
+        <label for="compForm">Compliance</label>
+        <textarea id="compForm" class="form-control comment-form"></textarea>
+        <label for="schedForm">Scheduling</label>
+        <textarea id="schedForm" class="form-control comment-form"></textarea>
+        <label for="phoneForm">NS Phones</label>
+        <textarea id="phoneForm" class="form-control comment-form"></textarea>
+        <br>
+        <button id="save-btn" class="btn btn-dark form-control">Save</button>
+    </div>
     <div class="row mt-5">
-        <div class="col">
+        <div class="col custom-border">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active theme-color" id="home-tab" data-toggle="tab" href="#home" role="tab">New Starts</a>
@@ -24,12 +38,47 @@
                     <a class="nav-link theme-color" id="contact-tab" data-toggle="tab" href="#phones" role="tab">NS Phones</a>
                 </li>
             </ul>
-            <div class="tab-content theme-color" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel">...</div>
-                <div class="tab-pane fade" id="profile" role="tabpanel">...</div>
-                <div class="tab-pane fade" id="contact" role="tabpanel">...</div>
-                <div class="tab-pane fade" id="schedule" role="tabpanel">...</div>
-                <div class="tab-pane fade" id="phones" role="tabpanel">...</div>
+            <div class="tab-content theme-color rounded-bottom" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel">
+                    <span class="greeting"></span>
+                    <br>
+                    <p class="comments"></p>
+                    <span>Have a great day
+                        <i class="fa fa-smile-o"></i>
+                    </span>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel">
+                    <span class="greeting"></span>
+                    <br>
+                    <p class="comments"></p>
+                    <span>Have a great day
+                        <i class="fa fa-smile-o"></i>
+                    </span>
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel">
+                    <span class="greeting"></span>
+                    <br>
+                    <p class="comments"></p>
+                    <span>Have a great day
+                        <i class="fa fa-smile-o"></i>
+                    </span>
+                </div>
+                <div class="tab-pane fade" id="schedule" role="tabpanel">
+                    <span class="greeting"></span>
+                    <br>
+                    <p class="comments"></p>
+                    <span>Have a great day
+                        <i class="fa fa-smile-o"></i>
+                    </span>
+                </div>
+                <div class="tab-pane fade" id="phones" role="tabpanel">
+                    <span class="greeting"></span>
+                    <br>
+                    <p class="comments"></p>
+                    <span>Have a great day
+                        <i class="fa fa-smile-o"></i>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
