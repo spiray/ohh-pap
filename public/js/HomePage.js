@@ -66,7 +66,7 @@ function setup() {
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then(response => response.json())
             .then(data => {
-                for (let post of data) {
+                for (let post in data) {
                     posts += post.body;
                 }
                 placeholderJson.html(posts)
