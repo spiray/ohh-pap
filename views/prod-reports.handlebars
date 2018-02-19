@@ -5,85 +5,31 @@
                 frameborder="0" allowFullScreen="true"></iframe>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-5">
         <div class="col">
-            <div id="comments" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ul class="carousel-indicators">
-                    <li data-target="#comments" data-slide-to="0" class="active"></li>
-                    <li data-target="#comments" data-slide-to="1"></li>
-                    <li data-target="#comments" data-slide-to="2"></li>
-                </ul>
-                <!-- The slideshow -->
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
-                        <div class="carousel-caption text-primary">
-                            <h2> PAP New Starts: </h2>
-                            <br>
-                            <p id="NSMessage"></p>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
-                        <div class="carousel-caption text-primary">
-                            <h2>PAP Resupply:</h2>
-                            <br>
-                            <p id="resMessage"></p>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
-                        <div class="carousel-caption text-primary">
-                            <h2>PAP Compliance:</h2>
-                            <br>
-                            <p id="compMessage"></p>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
-                        <div class="carousel-caption text-primary">
-                            <h2>PAP Scheduling:</h2>
-                            <br>
-                            <p id="schedMessage"></p>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="..\images\carouselBack.svg" class="img-responsive hundred">
-                        <div class="carousel-caption text-primary">
-                            <h2>PAP NS Phones:</h2>
-                            <br>
-                            <p id="phoneMessage"></p>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-                <!-- Left and right controls -->
-                <a class="carousel-control-prev" href="#comments" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#comments" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </a>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active theme-color" id="home-tab" data-toggle="tab" href="#home" role="tab">New Starts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link theme-color" id="profile-tab" data-toggle="tab" href="#profile" role="tab">Resupply</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link theme-color" id="contact-tab" data-toggle="tab" href="#contact" role="tab">Compliance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link theme-color" id="contact-tab" data-toggle="tab" href="#schedule" role="tab">Scheduling</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link theme-color" id="contact-tab" data-toggle="tab" href="#phones" role="tab">NS Phones</a>
+                </li>
+            </ul>
+            <div class="tab-content theme-color" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel">...</div>
+                <div class="tab-pane fade" id="profile" role="tabpanel">...</div>
+                <div class="tab-pane fade" id="contact" role="tabpanel">...</div>
+                <div class="tab-pane fade" id="schedule" role="tabpanel">...</div>
+                <div class="tab-pane fade" id="phones" role="tabpanel">...</div>
             </div>
         </div>
     </div>
