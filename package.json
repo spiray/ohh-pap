@@ -25,6 +25,7 @@
         "express-handlebars": "^3.0.0",
         "express-session": "^1.15.6",
         "node-fetch": "^1.7.3",
+        "node-json-db": "^0.7.3",
         "nodemailer": "^4.4.2",
         "path": "^0.12.7"
     },

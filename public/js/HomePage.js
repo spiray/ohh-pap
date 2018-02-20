@@ -200,10 +200,10 @@ function setup() {
         saveBtn.mouseClicked(() => {
             //Push comments to data file. 
             let nsData = CKEDITOR.instances.nsForm.getData();
-            let resData = CKEDITOR.instances.resForm.getData()
-            let compData = CKEDITOR.instances.compForm.getData()
-            let schedData = CKEDITOR.instances.schedForm.getData()
-            let phoneData = CKEDITOR.instances.phoneForm.getData()
+            let resData = CKEDITOR.instances.resForm.getData();
+            let compData = CKEDITOR.instances.compForm.getData();
+            let schedData = CKEDITOR.instances.schedForm.getData();
+            let phoneData = CKEDITOR.instances.phoneForm.getData();
             let commentBody = {
                 nsComment: nsData,
                 resComment: resData,
@@ -219,18 +219,15 @@ function setup() {
                     },
                     body: JSON.stringify(commentBody)
                 })
-                .then(res => res.text())
-                .then(text => console.log(text));
-            // .then(res => res.json())
-            // .then(data => {
-            //     comments[0].html(data.nsComment);
-            //     comments[1].html(data.resComment);
-            //     comments[2].html(data.compComment);
-            //     comments[3].html(data.schedComment);
-            //     comments[4].html(data.phoneComment);
-            // })
-
-
+                .then(res => res.json())
+                .then(data => {
+                    comments[0].html(data.nsComment);
+                    comments[1].html(data.resComment);
+                    comments[2].html(data.compComment);
+                    comments[3].html(data.schedComment);
+                    comments[4].html(data.phoneComment);
+                })
+                .catch(err => console.log(err));
             editForm.hide();
         })
     }

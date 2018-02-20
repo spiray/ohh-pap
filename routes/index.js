@@ -5,6 +5,7 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     fetch = require('node-fetch'),
     // comments = require('../models/comments'),
+    JsonDB = require('node-json-db'),
     router = express.Router();
 
 // Configure mailer
@@ -96,15 +97,17 @@ router.post('/emailContactForm', (req, res) => {
     })
     res.send('Email Sent...')
 })
-
+let db = new JsonDB('commentDB', true, true);
 router.post('/getCommentData', (req, res) => {
-    console.log(req.body);
-    // comments.nsComment = req.body.nsComment;
-    // comments.resComment = req.body.resComment;
-    // comments.compComment = req.body.compComment;
-    // comments.schedComment = req.body.schedComment;
-    // comments.phoneComment = req.body.phoneComment;
-    res.send('wrote to file');
+    console.log(process.argv[2]);
+    db.push('/comments/nsComment', `<br>${req.body.nsComment}`);
+    db.push('/comments/resComment', `<br>${req.body.resComment}`);
+    db.push('/comments/compComment', `<br>${req.body.compComment}`);
+    db.push('/comments/schedComment', `<br>${req.body.schedComment}`);
+    db.push('/comments/phoneComment', `<br>${req.body.phoneComment}`);
+
+    const comments = db.getData('/comments');
+    res.send(comments)
 })
 
 module.exports = router;
