@@ -1,9 +1,9 @@
 {
     "comments": {
-        "nsComment": "<br><p>select(&#39;#commentForm&#39;)</p>",
-        "resComment": "<br>",
-        "compComment": "<br><p>select(&#39;#commentForm&#39;)</p>",
-        "schedComment": "<br>",
-        "phoneComment": "<br><p>select(&#39;#commentForm&#39;)</p>"
+        "nsComment": "",
+        "resComment": "",
+        "compComment": "",
+        "schedComment": "",
+        "phoneComment": ""
     }
 }
