@@ -198,12 +198,38 @@ function setup() {
             CKEDITOR.replace(`${form.id()}`);
         }
         saveBtn.mouseClicked(() => {
-            //Push comments to db. 
-            comments[0].html(CKEDITOR.instances.nsForm.getData());
-            comments[1].html(CKEDITOR.instances.resForm.getData());
-            comments[2].html(CKEDITOR.instances.compForm.getData());
-            comments[3].html(CKEDITOR.instances.schedForm.getData());
-            comments[4].html(CKEDITOR.instances.phoneForm.getData());
+            //Push comments to data file. 
+            let nsData = CKEDITOR.instances.nsForm.getData();
+            let resData = CKEDITOR.instances.resForm.getData()
+            let compData = CKEDITOR.instances.compForm.getData()
+            let schedData = CKEDITOR.instances.schedForm.getData()
+            let phoneData = CKEDITOR.instances.phoneForm.getData()
+            let commentBody = {
+                nsComment: nsData,
+                resComment: resData,
+                compComment: compData,
+                schedComment: schedData,
+                phoneComment: phoneData
+            };
+            fetch('/getCommentData', {
+                    method: 'POST',
+                    headers: {
+                        "Accept": "*/*",
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(commentBody)
+                })
+                .then(res => res.text())
+                .then(text => console.log(text));
+            // .then(res => res.json())
+            // .then(data => {
+            //     comments[0].html(data.nsComment);
+            //     comments[1].html(data.resComment);
+            //     comments[2].html(data.compComment);
+            //     comments[3].html(data.schedComment);
+            //     comments[4].html(data.phoneComment);
+            // })
+
 
             editForm.hide();
         })

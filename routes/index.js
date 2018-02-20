@@ -4,6 +4,7 @@ const express = require('express'),
     // keys = require('../config/keys'),
     bodyParser = require('body-parser'),
     fetch = require('node-fetch'),
+    // comments = require('../models/comments'),
     router = express.Router();
 
 // Configure mailer
@@ -94,6 +95,16 @@ router.post('/emailContactForm', (req, res) => {
         }
     })
     res.send('Email Sent...')
+})
+
+router.post('/getCommentData', (req, res) => {
+    console.log(req.body);
+    // comments.nsComment = req.body.nsComment;
+    // comments.resComment = req.body.resComment;
+    // comments.compComment = req.body.compComment;
+    // comments.schedComment = req.body.schedComment;
+    // comments.phoneComment = req.body.phoneComment;
+    res.send('wrote to file');
 })
 
 module.exports = router;
