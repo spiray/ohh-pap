@@ -188,17 +188,17 @@ function setup() {
     }
 
     const editForm = select('#commentForm');
+    const comments = selectAll('.comments');
     editForm.hide();
+
     if (localStorage.getItem('editKey')) {
         editForm.show();
-        const comments = selectAll('.comments');
         const saveBtn = select('#save-btn');
         const forms = selectAll('.comment-form');
         for (let form of forms) {
             CKEDITOR.replace(`${form.id()}`);
         }
         saveBtn.mouseClicked(() => {
-            //Push comments to data file. 
             let nsData = CKEDITOR.instances.nsForm.getData();
             let resData = CKEDITOR.instances.resForm.getData();
             let compData = CKEDITOR.instances.compForm.getData();
@@ -211,7 +211,7 @@ function setup() {
                 schedComment: schedData,
                 phoneComment: phoneData
             };
-            fetch('/getCommentData', {
+            fetch('/setCommentData', {
                     method: 'POST',
                     headers: {
                         "Accept": "*/*",
@@ -219,18 +219,22 @@ function setup() {
                     },
                     body: JSON.stringify(commentBody)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    comments[0].html(data.nsComment);
-                    comments[1].html(data.resComment);
-                    comments[2].html(data.compComment);
-                    comments[3].html(data.schedComment);
-                    comments[4].html(data.phoneComment);
-                })
+                .then(res => res.text())
+                .then(text => console.log(text))
                 .catch(err => console.log(err));
             editForm.hide();
         })
     }
+    fetch('getCommentData')
+        .then(res => res.json())
+        .then(data => {
+            comments[0].html(data.nsComment);
+            comments[1].html(data.resComment);
+            comments[2].html(data.compComment);
+            comments[3].html(data.schedComment);
+            comments[4].html(data.phoneComment);
+        })
+        .catch(err => console.log(err));
 }
 const loadPriceTable = (tableForLoop) => {
     let tableHead = createElement('thead');

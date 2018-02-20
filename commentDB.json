@@ -1,9 +1,9 @@
 {
     "comments": {
-        "nsComment": "<br><p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh.</p><p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta.</p><br>",
-        "resComment": "<br><p>&nbsp;</p><p><strong>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus.</strong></p><p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh.</strong></p><p><strong>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta.</strong></p><br>",
-        "compComment": "<br><p>&nbsp;</p><p><em>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus.</em></p><p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh.</em></p><p><em>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta.</em></p><br>",
-        "schedComment": "<br><ul><li><p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh.</p><p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta.</p></li></ul><br>",
-        "phoneComment": "<br><p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh.</p><p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta.</p><br>"
+        "nsComment": "<br><p>const comments = db.getData(&#39;/comments&#39;);</p><p>res.send(comments);</p>",
+        "resComment": "<br>",
+        "compComment": "<br><p>const comments = db.getData(&#39;/comments&#39;);</p><p>res.send(comments);</p>",
+        "schedComment": "<br>",
+        "phoneComment": "<br><p>const comments = db.getData(&#39;/comments&#39;);</p><p>res.send(comments);</p>"
     }
 }

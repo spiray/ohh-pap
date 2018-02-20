@@ -98,16 +98,16 @@ router.post('/emailContactForm', (req, res) => {
     res.send('Email Sent...')
 })
 let db = new JsonDB('commentDB', true, true);
-router.post('/getCommentData', (req, res) => {
-    console.log(process.argv[2]);
+router.post('/setCommentData', (req, res) => {
     db.push('/comments/nsComment', `<br>${req.body.nsComment}`);
     db.push('/comments/resComment', `<br>${req.body.resComment}`);
     db.push('/comments/compComment', `<br>${req.body.compComment}`);
     db.push('/comments/schedComment', `<br>${req.body.schedComment}`);
     db.push('/comments/phoneComment', `<br>${req.body.phoneComment}`);
-
-    const comments = db.getData('/comments');
-    res.send(comments)
+    res.send('Data pushed...')
 })
-
+router.get('/getCommentData', (req, res) => {
+    const comments = db.getData('/comments');
+    res.send(comments);
+})
 module.exports = router;
