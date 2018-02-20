@@ -1,9 +1,9 @@
 {
     "comments": {
-        "nsComment": "<br><p>const comments = db.getData(&#39;/comments&#39;);</p><p>res.send(comments);</p>",
+        "nsComment": "<br><p>select(&#39;#commentForm&#39;)</p>",
         "resComment": "<br>",
-        "compComment": "<br><p>const comments = db.getData(&#39;/comments&#39;);</p><p>res.send(comments);</p>",
+        "compComment": "<br><p>select(&#39;#commentForm&#39;)</p>",
         "schedComment": "<br>",
-        "phoneComment": "<br><p>const comments = db.getData(&#39;/comments&#39;);</p><p>res.send(comments);</p>"
+        "phoneComment": "<br><p>select(&#39;#commentForm&#39;)</p>"
     }
 }

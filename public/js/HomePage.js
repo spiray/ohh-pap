@@ -1,5 +1,3 @@
-'use strict';
-
 // Import internal functions
 // import { loadPriceTable, geoLocation, getWeather, branchSearch, getTime } from './mainFunc.js';
 
@@ -172,69 +170,70 @@ function setup() {
     //Remove default canvas
     const unwantedCanvas = select('#defaultCanvas0');
     unwantedCanvas.remove();
+    if (select('#commentForm')) {
+        //Set reporting comments greeting
+        const greetingElements = selectAll('.greeting');
+        if (greetingElements) {
+            let greeting;
+            if (hour() < 11) {
+                greeting = 'Good Morning,';
+            } else {
+                greeting = 'Good Afternoon,';
+            }
+            for (let greetingElement of greetingElements) {
+                greetingElement.html(greeting);
+            }
+        }
 
-    //Set reporting comments greeting
-    const greetingElements = selectAll('.greeting');
-    if (greetingElements) {
-        let greeting;
-        if (hour() < 11) {
-            greeting = 'Good Morning,';
-        } else {
-            greeting = 'Good Afternoon,';
+        const editForm = select('#commentForm');
+        const comments = selectAll('.comments');
+        editForm.hide();
+
+        if (localStorage.getItem('editKey')) {
+            editForm.show();
+            const saveBtn = select('#save-btn');
+            const forms = selectAll('.comment-form');
+            for (let form of forms) {
+                CKEDITOR.replace(`${form.id()}`);
+            }
+            saveBtn.mouseClicked(() => {
+                let nsData = CKEDITOR.instances.nsForm.getData();
+                let resData = CKEDITOR.instances.resForm.getData();
+                let compData = CKEDITOR.instances.compForm.getData();
+                let schedData = CKEDITOR.instances.schedForm.getData();
+                let phoneData = CKEDITOR.instances.phoneForm.getData();
+                let commentBody = {
+                    nsComment: nsData,
+                    resComment: resData,
+                    compComment: compData,
+                    schedComment: schedData,
+                    phoneComment: phoneData
+                };
+                fetch('/setCommentData', {
+                        method: 'POST',
+                        headers: {
+                            "Accept": "*/*",
+                            "Content-type": "application/json"
+                        },
+                        body: JSON.stringify(commentBody)
+                    })
+                    .then(res => res.text())
+                    .then(text => console.log(text))
+                    .catch(err => console.log(err));
+                editForm.hide();
+            })
         }
-        for (let greetingElement of greetingElements) {
-            greetingElement.html(greeting);
-        }
+        fetch('getCommentData')
+            .then(res => res.json())
+            .then(data => {
+                comments[0].html(data.nsComment);
+                comments[1].html(data.resComment);
+                comments[2].html(data.compComment);
+                comments[3].html(data.schedComment);
+                comments[4].html(data.phoneComment);
+            })
+            .catch(err => console.log(err));
     }
-
-    const editForm = select('#commentForm');
-    const comments = selectAll('.comments');
-    editForm.hide();
-
-    if (localStorage.getItem('editKey')) {
-        editForm.show();
-        const saveBtn = select('#save-btn');
-        const forms = selectAll('.comment-form');
-        for (let form of forms) {
-            CKEDITOR.replace(`${form.id()}`);
-        }
-        saveBtn.mouseClicked(() => {
-            let nsData = CKEDITOR.instances.nsForm.getData();
-            let resData = CKEDITOR.instances.resForm.getData();
-            let compData = CKEDITOR.instances.compForm.getData();
-            let schedData = CKEDITOR.instances.schedForm.getData();
-            let phoneData = CKEDITOR.instances.phoneForm.getData();
-            let commentBody = {
-                nsComment: nsData,
-                resComment: resData,
-                compComment: compData,
-                schedComment: schedData,
-                phoneComment: phoneData
-            };
-            fetch('/setCommentData', {
-                    method: 'POST',
-                    headers: {
-                        "Accept": "*/*",
-                        "Content-type": "application/json"
-                    },
-                    body: JSON.stringify(commentBody)
-                })
-                .then(res => res.text())
-                .then(text => console.log(text))
-                .catch(err => console.log(err));
-            editForm.hide();
-        })
-    }
-    fetch('getCommentData')
-        .then(res => res.json())
-        .then(data => {
-            comments[0].html(data.nsComment);
-            comments[1].html(data.resComment);
-            comments[2].html(data.compComment);
-            comments[3].html(data.schedComment);
-            comments[4].html(data.phoneComment);
-        })
-        .catch(err => console.log(err));
 }
 const loadPriceTable = (tableForLoop) => {
     let tableHead = createElement('thead');

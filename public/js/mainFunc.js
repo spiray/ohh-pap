@@ -1,7 +1,5 @@
-'use strict';
-
 //  Func to dynamically load item/price table.
-const loadPriceTable = (tableForLoop) => {
+export const loadPriceTable = (tableForLoop) => {
     let tableHead = createElement('thead');
     let header = `<tr class="bg-primary">
                     <th>${priceData.columns[0]}</th>
@@ -30,7 +28,7 @@ const loadPriceTable = (tableForLoop) => {
 }
 
 //  Function to test if browser supports geolocation and call Open Weather Map to get local weather or user entered location weather.
-const geoLocation = () => {
+export const geoLocation = () => {
     navigator.geolocation.getCurrentPosition(getWeather, err => {
         if (sessionStorage.getItem('zip')) {
             currentZip = sessionStorage.getItem('zip');
@@ -62,7 +60,7 @@ const geoLocation = () => {
 }
 
 //  Callback func to call OpenWeatherMap for weather at given lon & lat.
-const getWeather = position => {
+export const getWeather = position => {
     let geoCoords = position.coords;
     //  POST request to server side GET request.
     fetch('/getGeoWeather', {
@@ -85,7 +83,7 @@ const getWeather = position => {
 }
 
 //  Func to loop through a column in a csv file and return the corresponding Location if found. 
-const branchSearch = () => {
+export const branchSearch = () => {
     if (zipSearch.value().length !== 5) {
         resultLoc.html('Enter 5 digit zip code.')
     } else {
@@ -101,36 +99,35 @@ const branchSearch = () => {
 }
 
 //  Func to to get day and time. 
-const getTime = () => {
-        todayIs = select('#todayIs');
-        let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        let dayOfWeek = weekdays[new Date().getDay()];
-        //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        //   let monthName = months[month()];
-        let hr,
-            mn,
-            scnd,
-            time;
-        if (hour() > 12) {
-            hr = hour() - 12
-        } else {
-            hr = hour()
-        }
-        if (minute() < 10) {
-            mn = `0${minute()}`;
-        } else {
-            mn = minute();
-        }
-        if (second() < 10) {
-            scnd = `0${second()}`;
-        } else {
-            scnd = second();
-        }
-        if (hour() > 11) {
-            time = `${hr}:${mn}:${scnd} PM`;
-        } else {
-            time = `${hr}:${mn}:${scnd} AM`;
-        }
-        todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
+export const getTime = () => {
+    todayIs = select('#todayIs');
+    let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let dayOfWeek = weekdays[new Date().getDay()];
+    //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    //   let monthName = months[month()];
+    let hr,
+        mn,
+        scnd,
+        time;
+    if (hour() > 12) {
+        hr = hour() - 12
+    } else {
+        hr = hour()
     }
-    // export { loadPriceTable, geoLocation, getWeather, branchSearch, getTime };
+    if (minute() < 10) {
+        mn = `0${minute()}`;
+    } else {
+        mn = minute();
+    }
+    if (second() < 10) {
+        scnd = `0${second()}`;
+    } else {
+        scnd = second();
+    }
+    if (hour() > 11) {
+        time = `${hr}:${mn}:${scnd} PM`;
+    } else {
+        time = `${hr}:${mn}:${scnd} AM`;
+    }
+    todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
+}
