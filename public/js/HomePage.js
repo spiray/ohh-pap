@@ -175,10 +175,9 @@ function setup() {
                 greetingElement.html(greeting);
             }
         }
-
-        //configure page for admin only.
         const forms = selectAll('.comment-form');
         for (let form of forms) {
+            console.log(form.id());
             CKEDITOR.replace(`${form.id()}`);
         }
         const saveBtn = select('#save-btn');
