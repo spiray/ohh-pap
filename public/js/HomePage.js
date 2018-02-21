@@ -59,18 +59,6 @@ function setup() {
     setInterval(geoLocation, 1000 * 60 * 30);
 
     //  Functionality and event listeners for the calculator.
-    if (placeholderJson) {
-        let posts = '';
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json())
-            .then(data => {
-                for (let post in data) {
-                    posts += post.body;
-                }
-                placeholderJson.html(posts)
-            })
-            .catch(err => console.log(err));
-    }
     if (addToDate) {
         addToDate.input(() => {
             dateValue = dateInput.value();
@@ -169,6 +157,8 @@ function setup() {
     //Remove default canvas
     const unwantedCanvas = select('#defaultCanvas0');
     unwantedCanvas.remove();
+
+    //Load comments for prod reports.
     const adminBtn = select('#admin-btn');
     adminBtn.hide();
     if (select('#myTabContent')) {
@@ -188,7 +178,7 @@ function setup() {
             }
         }
 
-
+        //configure page for admin only.
         if (localStorage.getItem('editKey')) {
             adminBtn.show();
             const forms = selectAll('.comment-form');
@@ -222,6 +212,8 @@ function setup() {
                     .catch(err => console.log(err));
             })
         }
+
+        //Fetch all comments and display them.
         fetch('getCommentData')
             .then(res => res.json())
             .then(data => {
