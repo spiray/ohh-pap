@@ -1,9 +1,9 @@
 {
     "comments": {
-        "nsComment": "<br>",
-        "resComment": "<br>",
-        "compComment": "<br><p>const adminBtn = select(&#39;#admin-btn&#39;);</p>",
-        "schedComment": "<br><p>const adminBtn = select(&#39;#admin-btn&#39;);</p>",
-        "phoneComment": "<br><p>const adminBtn = select(&#39;#admin-btn&#39;);</p>"
+        "nsComment": "<br><p>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p><p>Curabitur aliquet quam id dui posuere blandit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</p><p>Donec rutrum congue leo eget malesuada. Proin eget tortor risus.</p>",
+        "resComment": "<br><p>&nbsp;</p><p><strong>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</strong></p><p><strong>Curabitur aliquet quam id dui posuere blandit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</strong></p><p><strong>Donec rutrum congue leo eget malesuada. Proin eget tortor risus.</strong></p>",
+        "compComment": "<br><p>&nbsp;</p><p><em>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</em></p><p><em>Curabitur aliquet quam id dui posuere blandit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</em></p><p><em>Donec rutrum congue leo eget malesuada. Proin eget tortor risus.</em></p>",
+        "schedComment": "<br><ul><li>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</li><li>Curabitur aliquet quam id dui posuere blandit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</li><li>Donec rutrum congue leo eget malesuada. Proin eget tortor risus.</li></ul>",
+        "phoneComment": "<br><p>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p><p>Curabitur aliquet quam id dui posuere blandit. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.</p><p>Donec rutrum congue leo eget malesuada. Proin eget tortor risus.</p>"
     }
 }

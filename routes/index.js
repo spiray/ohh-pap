@@ -21,47 +21,21 @@ let transporter = nodemailer.createTransport({
     }
 });
 // Home Route
-router.get('/', (req, res) => {
-    res.render('home', {
-        title: 'OHH Apps'
-    });
-});
+router.get('/', (req, res) => res.render('home', { title: 'OHH Apps' }));
 
 // Calc Route
-router.get('/calc', (req, res) => {
-    res.render('calc', {
-        title: 'PAP Calculator'
-    });
-});
+router.get('/calc', (req, res) => res.render('calc', { title: 'PAP Calculator' }));
 
 // Pricelist route
-router.get('/price-list', (req, res) => {
-    res.render('price-list', {
-        title: 'PAP Supply Pricing'
-    });
-});
+router.get('/price-list', (req, res) => res.render('price-list', { title: 'PAP Supply Pricing' }));
 
 // Reports route
-router.get('/prod-reports', (req, res) => {
-    res.render('prod-reports', {
-        title: 'Productivity Reports'
-    });
-});
+router.get('/prod-reports', (req, res) => res.render('prod-reports', { title: 'Productivity Reports' }));
 
 // Location Pars route
-router.get('/location-pars', (req, res) => {
-    res.render('location-pars', {
-        class: 'map',
-        title: 'Location Pars'
-    });
-});
+router.get('/location-pars', (req, res) => res.render('location-pars', { class: 'map', title: 'Location Pars' }));
 
-// Send prictable.csv
-router.get('/getPriceTable', (req, res) => {
-        console.log('API hit...');
-        res.send(path.join('../data/pricetable.csv'));
-    })
-    // Weather API request if browser navigation is enabled
+// Weather API request if browser navigation is enabled
 router.post('/getGeoWeather', (req, res) => {
         let lat = req.body.latitude;
         let lon = req.body.longitude;
@@ -105,8 +79,6 @@ router.post('/setCommentData', (req, res) => {
     db.push('/comments/phoneComment', `<br>${req.body.phoneComment}`);
     res.send('Data pushed...')
 })
-router.get('/getCommentData', (req, res) => {
-    const comments = db.getData('/comments');
-    res.send(comments);
-})
+router.get('/getCommentData', (req, res) => res.send(db.getData('/comments')));
+
 module.exports = router;
