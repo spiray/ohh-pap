@@ -163,7 +163,6 @@ function setup() {
     if (select('#myTabContent')) {
         //Set reporting comments greeting
         const comments = selectAll('.comments');
-
         const greetingElements = selectAll('.greeting');
         if (greetingElements) {
             let greeting;
@@ -178,39 +177,37 @@ function setup() {
         }
 
         //configure page for admin only.
-        if (localStorage.getItem('editKey')) {
-            adminBtn.show();
-            const forms = selectAll('.comment-form');
-            for (let form of forms) {
-                CKEDITOR.replace(`${form.id()}`);
-            }
-            const saveBtn = select('#save-btn');
-            saveBtn.mouseClicked(() => {
-                let nsData = CKEDITOR.instances.nsForm.getData();
-                let resData = CKEDITOR.instances.resForm.getData();
-                let compData = CKEDITOR.instances.compForm.getData();
-                let schedData = CKEDITOR.instances.schedForm.getData();
-                let phoneData = CKEDITOR.instances.phoneForm.getData();
-                let commentBody = {
-                    nsComment: nsData,
-                    resComment: resData,
-                    compComment: compData,
-                    schedComment: schedData,
-                    phoneComment: phoneData
-                };
-                fetch('/setCommentData', {
-                        method: 'POST',
-                        headers: {
-                            "Accept": "*/*",
-                            "Content-type": "application/json"
-                        },
-                        body: JSON.stringify(commentBody)
-                    })
-                    .then(res => res.text())
-                    .then(text => console.log(text))
-                    .catch(err => console.log(err));
-            })
+        const forms = selectAll('.comment-form');
+        for (let form of forms) {
+            CKEDITOR.replace(`${form.id()}`);
         }
+        const saveBtn = select('#save-btn');
+        saveBtn.mouseClicked(() => {
+            let nsData = CKEDITOR.instances.nsForm.getData();
+            let resData = CKEDITOR.instances.resForm.getData();
+            let compData = CKEDITOR.instances.compForm.getData();
+            let schedData = CKEDITOR.instances.schedForm.getData();
+            let phoneData = CKEDITOR.instances.phoneForm.getData();
+            let commentBody = {
+                nsComment: nsData,
+                resComment: resData,
+                compComment: compData,
+                schedComment: schedData,
+                phoneComment: phoneData
+            };
+            fetch('/setCommentData', {
+                    method: 'POST',
+                    headers: {
+                        "Accept": "*/*",
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(commentBody)
+                })
+                .then(res => res.text())
+                .then(text => console.log(text))
+                .catch(err => console.log(err));
+            window.location.reload(true);
+        })
 
         //Fetch all comments and display them.
         fetch('getCommentData')

@@ -152,5 +152,8 @@ hr {
 }
 
 #admin-btn {
-    display: none;
+    display: block;
+    width: 1px;
+    height: 1px;
+    padding: 0;
 }
