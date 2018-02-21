@@ -173,7 +173,6 @@ function setup() {
     adminBtn.hide();
     if (select('#myTabContent')) {
         //Set reporting comments greeting
-        console.log('toadmin');
         const comments = selectAll('.comments');
 
         const greetingElements = selectAll('.greeting');
@@ -191,7 +190,6 @@ function setup() {
 
 
         if (localStorage.getItem('editKey')) {
-            consol.log('admin');
             adminBtn.show();
             const forms = selectAll('.comment-form');
             for (let form of forms) {
