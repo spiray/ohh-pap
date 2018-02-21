@@ -169,8 +169,13 @@ function setup() {
     //Remove default canvas
     const unwantedCanvas = select('#defaultCanvas0');
     unwantedCanvas.remove();
+    const adminBtn = select('#admin-btn');
+    adminBtn.hide();
     if (select('#myTabContent')) {
         //Set reporting comments greeting
+        console.log('toadmin');
+        const comments = selectAll('.comments');
+
         const greetingElements = selectAll('.greeting');
         if (greetingElements) {
             let greeting;
@@ -184,10 +189,9 @@ function setup() {
             }
         }
 
-        const comments = selectAll('.comments');
-        const adminBtn = select('#admin-btn');
-        adminBtn.hide();
+
         if (localStorage.getItem('editKey')) {
+            consol.log('admin');
             adminBtn.show();
             const forms = selectAll('.comment-form');
             for (let form of forms) {
