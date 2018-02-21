@@ -28,7 +28,6 @@ function preload() {
     }
 }
 
-
 function setup() {
     //  Declare and set constants
     const addToDate = select('#addToDate'),
@@ -42,7 +41,9 @@ function setup() {
         locationDisplay = select('#locationDisplay'),
         getWeather = select('#getWeather'),
         contactSubmit = select('#contact-submit'),
-        placeholderJson = select('#placeholder-json');
+        placeholderJson = select('#placeholder-json'),
+        prodHost = 'https://pure-escarpment-35043.herokuapp.com/',
+        devHost = 'http://localhost:5000/';
 
     //Set variables
     zipSearch = select('.search');
@@ -62,7 +63,8 @@ function setup() {
     setInterval(geoLocation, 1000 * 60 * 30);
 
     //  Functionality and event listeners for the calculator.
-    if (addToDate) {
+    if (window.location.href == `${devHost}calc` ||
+        window.location.href == `${prodHost}calc`) {
         addToDate.input(() => {
             dateValue = dateInput.value();
             let dat = moment(dateValue).add(addToDate.value(), 'day');
@@ -111,7 +113,8 @@ function setup() {
     }
 
     //  Functionality and event listeners for the branch listing. 
-    if (zipSearch) {
+    if (window.location.href == `${devHost}location-pars` ||
+        window.location.href == `${prodHost}location-pars`) {
         zipSearch.changed(() => {
             branchSearch();
         })
@@ -149,18 +152,15 @@ function setup() {
     }
 
     //Load comments for prod reports.
-    if (select('#myTabContent')) {
+    if (window.location.href == `${devHost}prod-reports` ||
+        window.location.href == `${prodHost}prod-reports`) {
         //Set reporting comments greeting
         const adminBtn = select('#admin-btn');
         const comments = selectAll('.comments');
         const greetingElements = selectAll('.greeting');
         if (greetingElements) {
             let greeting;
-            if (hour() < 11) {
-                greeting = 'Good Morning,';
-            } else {
-                greeting = 'Good Afternoon,';
-            }
+            greeting = hour() < 11 ? 'Good Morning,' : 'Good Afternoon,';
             for (let greetingElement of greetingElements) {
                 greetingElement.html(greeting);
             }
@@ -326,10 +326,10 @@ const getTime = () => {
         mn,
         scnd,
         time;
-    hour() > 12 ? hr = hour() - 12 : hr = hour();
-    minute() < 10 ? mn = `0${minute()}` : mn = minute();
-    second() < 10 ? scnd = `0${second()}` : scnd = second();
-    hour() > 11 ? time = `${hr}:${mn}:${scnd} PM` : time = `${hr}:${mn}:${scnd} AM`;
+    hr = hour() > 12 ? hour() - 12 : hour();
+    mn = minute() < 10 ? `0${minute()}` : minute();
+    scnd = second() < 10 ? `0${second()}` : second();
+    time = hour() > 11 ? `${hr}:${mn}:${scnd} PM` : `${hr}:${mn}:${scnd} AM`;
     todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
 }
 

@@ -4,7 +4,6 @@ const express = require('express'),
     // keys = require('../config/keys'),
     bodyParser = require('body-parser'),
     fetch = require('node-fetch'),
-    // comments = require('../models/comments'),
     JsonDB = require('node-json-db'),
     router = express.Router();
 
@@ -92,7 +91,7 @@ router.post('/emailContactForm', (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            return console.log(error);
+            return error;
         }
     })
     res.send('Email Sent...')
