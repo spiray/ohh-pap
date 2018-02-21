@@ -150,3 +150,7 @@ hr {
     color: white !important;
     background-color: #13818D !important;
 }
+
+#admin-btn {
+    display: none;
+}

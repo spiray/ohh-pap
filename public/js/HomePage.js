@@ -160,7 +160,6 @@ function setup() {
 
     //Load comments for prod reports.
     const adminBtn = select('#admin-btn');
-    adminBtn.hide();
     if (select('#myTabContent')) {
         //Set reporting comments greeting
         const comments = selectAll('.comments');
