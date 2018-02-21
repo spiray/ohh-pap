@@ -1,7 +1,10 @@
 $(document).ready(function() {
     $('#contact-submit').click(() => {
-        console.log('Modal Hidden...');
         $('#contact-us').modal('hide');
+        $('#email-sent').modal('show');
+    })
+    $('#save-btn').click(() => {
+        $('#enter-comments').modal('hide');
     })
     $('.search').keyup(function() {
         let searchTerm = $('.search').val();

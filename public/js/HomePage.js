@@ -153,7 +153,6 @@ function setup() {
                 subject: subject,
                 body: body
             };
-            console.log(email);
             fetch('/emailContactForm', {
                     method: 'POST',
                     headers: {
@@ -170,7 +169,7 @@ function setup() {
     //Remove default canvas
     const unwantedCanvas = select('#defaultCanvas0');
     unwantedCanvas.remove();
-    if (select('#commentForm')) {
+    if (select('#myTabContent')) {
         //Set reporting comments greeting
         const greetingElements = selectAll('.greeting');
         if (greetingElements) {
@@ -185,17 +184,16 @@ function setup() {
             }
         }
 
-        const editForm = select('#commentForm');
         const comments = selectAll('.comments');
-        editForm.hide();
-
+        const adminBtn = select('#admin-btn');
+        adminBtn.hide();
         if (localStorage.getItem('editKey')) {
-            editForm.show();
-            const saveBtn = select('#save-btn');
+            adminBtn.show();
             const forms = selectAll('.comment-form');
             for (let form of forms) {
                 CKEDITOR.replace(`${form.id()}`);
             }
+            const saveBtn = select('#save-btn');
             saveBtn.mouseClicked(() => {
                 let nsData = CKEDITOR.instances.nsForm.getData();
                 let resData = CKEDITOR.instances.resForm.getData();
@@ -220,7 +218,6 @@ function setup() {
                     .then(res => res.text())
                     .then(text => console.log(text))
                     .catch(err => console.log(err));
-                editForm.hide();
             })
         }
         fetch('getCommentData')
