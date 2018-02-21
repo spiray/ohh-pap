@@ -30,7 +30,7 @@ function preload() {
 
 
 function setup() {
-    //  Set variables
+    //  Declare and set constants
     const addToDate = select('#addToDate'),
         dateSum = select('#dateSum'),
         dateInput = select('#dateInput'),
@@ -43,8 +43,11 @@ function setup() {
         getWeather = select('#getWeather'),
         contactSubmit = select('#contact-submit'),
         placeholderJson = select('#placeholder-json');
+
+    //Set variables
     zipSearch = select('.search');
     resultLoc = select('#resultLoc');
+
     //  Display time and update every second.
     getTime();
     setInterval(getTime, 1000 * 1);
@@ -65,8 +68,7 @@ function setup() {
             let dat = moment(dateValue).add(addToDate.value(), 'day');
             dateSum.attribute("value", dat.calendar());
         });
-    }
-    if (dateInput) {
+
         dateInput.input(() => {
             if (addToDate.value() !== '') {
                 dateValue = dateInput.value();
@@ -74,8 +76,6 @@ function setup() {
                 dateSum.attribute("value", dat.calendar());
             }
         })
-    }
-    if (dateInput2) {
         dateInput2.changed(() => {
             inTags = selectAll('input');
             for (let i = 0; i < inTags.length; i++) {
@@ -96,15 +96,11 @@ function setup() {
                 }
             }
         });
-    }
-    if (dateInput4) {
         dateInput4.changed(() => {
             select('#Months').value(
                 moment(dateInput4.value())
                 .diff(dateInput3.value(), 'months'));
         });
-    }
-    if (dateInput3) {
         dateInput3.changed(() => {
             if (dateInput4.value()) {
                 select('#Months').value(
@@ -119,16 +115,14 @@ function setup() {
         zipSearch.changed(() => {
             branchSearch();
         })
-    }
-    if (findLoc) {
         findLoc.mouseClicked(() => {
             branchSearch();
         })
-    }
-    if (copyBtn) {
         new Clipboard('#copyToClip');
         copyBtn.mouseClicked(() => {});
     }
+
+    //Suggestion modal functionality
     CKEDITOR.replace('contactBody');
     if (contactSubmit) {
         contactSubmit.mouseClicked(() => {
@@ -154,14 +148,10 @@ function setup() {
         })
     }
 
-    //Remove default canvas
-    const unwantedCanvas = select('#defaultCanvas0');
-    unwantedCanvas.remove();
-
     //Load comments for prod reports.
-    const adminBtn = select('#admin-btn');
     if (select('#myTabContent')) {
         //Set reporting comments greeting
+        const adminBtn = select('#admin-btn');
         const comments = selectAll('.comments');
         const greetingElements = selectAll('.greeting');
         if (greetingElements) {
@@ -177,7 +167,6 @@ function setup() {
         }
         const forms = selectAll('.comment-form');
         for (let form of forms) {
-            console.log(form.id());
             CKEDITOR.replace(`${form.id()}`);
         }
         const saveBtn = select('#save-btn');
@@ -203,7 +192,7 @@ function setup() {
                     body: JSON.stringify(commentBody)
                 })
                 .then(res => res.text())
-                .then(text => console.log(text))
+                .then(text => text)
                 .catch(err => console.log(err));
             window.location.reload(true);
         })
@@ -220,8 +209,14 @@ function setup() {
             })
             .catch(err => console.log(err));
     }
+
+    //Remove default canvas
+    const unwantedCanvas = select('#defaultCanvas0');
+    unwantedCanvas.remove();
 }
-const loadPriceTable = (tableForLoop) => {
+
+//Function that loads the pricetable data into the html table.
+const loadPriceTable = tableForLoop => {
     let tableHead = createElement('thead');
     let header = `<tr class="bg-dark theme-color">
                     <th>${priceData.columns[0].toUpperCase()}</th>
@@ -331,26 +326,10 @@ const getTime = () => {
         mn,
         scnd,
         time;
-    if (hour() > 12) {
-        hr = hour() - 12
-    } else {
-        hr = hour()
-    }
-    if (minute() < 10) {
-        mn = `0${minute()}`;
-    } else {
-        mn = minute();
-    }
-    if (second() < 10) {
-        scnd = `0${second()}`;
-    } else {
-        scnd = second();
-    }
-    if (hour() > 11) {
-        time = `${hr}:${mn}:${scnd} PM`;
-    } else {
-        time = `${hr}:${mn}:${scnd} AM`;
-    }
+    hour() > 12 ? hr = hour() - 12 : hr = hour();
+    minute() < 10 ? mn = `0${minute()}` : mn = minute();
+    second() < 10 ? scnd = `0${second()}` : scnd = second();
+    hour() > 11 ? time = `${hr}:${mn}:${scnd} PM` : time = `${hr}:${mn}:${scnd} AM`;
     todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
 }
 

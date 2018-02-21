@@ -1,9 +1,9 @@
 {
     "comments": {
-        "nsComment": "<br><p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla porttitor accumsan tincidunt.</p><p>Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>",
-        "resComment": "<br><p>&nbsp;</p><p><strong>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla porttitor accumsan tincidunt.</strong></p><p><strong>Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</strong></p>",
-        "compComment": "<br><p>&nbsp;</p><p><em>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla porttitor accumsan tincidunt.</em></p><p><em>Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</em></p>",
-        "schedComment": "<br><ul><li><strong>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla porttitor accumsan tincidunt.</strong></li><li><strong>Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</strong></li></ul>",
-        "phoneComment": "<br><ol><li>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla porttitor accumsan tincidunt.</li><li>Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</li></ol>"
+        "nsComment": "<br>",
+        "resComment": "<br>",
+        "compComment": "<br><p>const adminBtn = select(&#39;#admin-btn&#39;);</p>",
+        "schedComment": "<br><p>const adminBtn = select(&#39;#admin-btn&#39;);</p>",
+        "phoneComment": "<br><p>const adminBtn = select(&#39;#admin-btn&#39;);</p>"
     }
 }
