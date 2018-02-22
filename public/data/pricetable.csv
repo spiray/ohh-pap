@@ -1,7 +1,7 @@
 id,Category,Item,Price,Notes
 1,Chin Strap,Chin Strap ,$15 ,
 2,Chin Strap,Deluxe/Premium Chin Strap,$20 ,
-3,Fiters,Disposable Filters,$2 ,
+3,Filters,Disposable Filters,$2 ,
 4,Machine Accessories,Dreamstation Gasket* ,$5 ,Item Shipped out of Lakewood
 5,Cushions/Pillows,Full Face Cushions,$35 ,
 6,Mask,Full Face Masks,$150 ,
@@ -19,7 +19,7 @@ id,Category,Item,Price,Notes
 18,Machine Accessories,Resmed S9 Filter Cover*,$5 ,Item Shipped out of Lakewood
 19,Machine Accessories,Respironics Power Cord Only,$25 ,
 20,Machine Accessories,Respironics Power Supply/Cord,$100 ,
-21,Fiters,Reusable Filters,$5 ,
+21,Filters,Reusable Filters,$5 ,
 22,Cleaning,SoClean Adapter F&P Icon,$16.99 ,
 23,Cleaning,SoClean Adapter F&P Sleepstlye,$24 ,
 24,Cleaning,SoClean Adapter Resmed/Respironics,$16.99 ,
