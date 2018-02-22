@@ -271,7 +271,7 @@ const geoLocation = () => {
             .then(response => response.json())
             .then(data => {
                 locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
-                    <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
+                    <img width="26" height="26" src="${prodHost}http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
             });
     });
 }
@@ -294,7 +294,7 @@ const getWeather = position => {
         .then(response => response.json())
         .then(data => {
             locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
-                                             <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`
+                                             <img width="26" height="26" src="${prodHost}http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`
         })
         .catch(err => console.log(`API Error ${err}`));
 }
