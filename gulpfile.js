@@ -7,18 +7,22 @@ let gulp = require('gulp'),
     concat = require('gulp-concat');
 
 const paths = {
-    images: './public/images/**/*',
+    images: './public/images/*',
     scripts: './public/js/*.js',
-    styles: './public/css/*.css'
+    styles: './public/css/*.css',
+    data: './public/data/*.csv',
+    docs: './public/docs/*/*.pdf'
 };
 
 const dests = {
     images: 'dist/public/images',
     scripts: 'dist/public/js',
-    styles: 'dist/public/css'
+    styles: 'dist/public/css',
+    data: 'dist/public/data',
+    docs: 'dist/public/docs'
 };
 
-gulp.task('default', ['images', 'minify-css', 'minify-js']);
+gulp.task('default', ['images', 'minify-css', 'minify-js', 'data', 'docs']);
 
 gulp.task('images', () => {
     return gulp.src(paths.images)
@@ -39,8 +43,19 @@ gulp.task('minify-js', () => {
             ext: {
                 min: '.min.js'
             },
-            noSource: '*'
+            noSource: '*',
+            exclude: ['mainFunc.js']
         }))
         .pipe(concat('all.min.js'))
         .pipe(gulp.dest(dests.scripts));
 });
+
+gulp.task('docs', () => {
+    return gulp.src(paths.docs)
+        .pipe(gulp.dest(dests.docs));
+})
+
+gulp.task('data', () => {
+    return gulp.src(paths.data)
+        .pipe(gulp.dest(dests.data));
+})
