@@ -1,7 +1,7 @@
 const express = require('express'),
     exphbs = require('express-handlebars'),
     nodemailer = require('nodemailer'),
-    // keys = require('../config/keys'),
+    keys = require('../config/keys'),
     bodyParser = require('body-parser'),
     fetch = require('node-fetch'),
     JsonDB = require('node-json-db'),
@@ -14,7 +14,7 @@ let transporter = nodemailer.createTransport({
     port: 587,
     auth: {
         user: "joseph@oceanhomehealth.com",
-        pass: 'Hellopo1i' //keys.emailPass
+        pass: keys.emailPass
     },
     tls: {
         ciphers: 'SSLv3'
@@ -39,7 +39,7 @@ router.get('/location-pars', (req, res) => res.render('location-pars', { class: 
 router.post('/getGeoWeather', (req, res) => {
         let lat = req.body.latitude;
         let lon = req.body.longitude;
-        const APIKey = '790e3bcb8a16e2395b51c9f39b7909f7'; //keys.weatherAPI;
+        const APIKey = keys.weatherAPI;
         fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
             .then(response => response.json())
             .then(data => res.send(data))
