@@ -26,7 +26,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // Deliver static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // Configure Body parser to streamline HTTP requests
 app.use(bodyParser.json());
