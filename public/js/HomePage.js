@@ -14,6 +14,21 @@ let dateValue,
     resultLoc,
     resultCard,
     priceData;
+//  Declare and set constants
+const addToDate = select('#addToDate'),
+    dateSum = select('#dateSum'),
+    dateInput = select('#dateInput'),
+    dateInput2 = select('#dateInput2'),
+    dateInput3 = select('#dateInput3'),
+    dateInput4 = select('#dateInput4'),
+    findLoc = select('.findLoc'),
+    copyBtn = select('#copyToClip'),
+    locationDisplay = select('#locationDisplay'),
+    getWeather = select('#getWeather'),
+    contactSubmit = select('#contact-submit'),
+    placeholderJson = select('#placeholder-json'),
+    prodHost = 'https://pure-escarpment-35043.herokuapp.com/',
+    devHost = 'http://localhost:5000/';
 
 function preload() {
     //   Preload price table csv.
@@ -29,21 +44,21 @@ function preload() {
 }
 
 function setup() {
-    //  Declare and set constants
-    const addToDate = select('#addToDate'),
-        dateSum = select('#dateSum'),
-        dateInput = select('#dateInput'),
-        dateInput2 = select('#dateInput2'),
-        dateInput3 = select('#dateInput3'),
-        dateInput4 = select('#dateInput4'),
-        findLoc = select('.findLoc'),
-        copyBtn = select('#copyToClip'),
-        locationDisplay = select('#locationDisplay'),
-        getWeather = select('#getWeather'),
-        contactSubmit = select('#contact-submit'),
-        placeholderJson = select('#placeholder-json'),
-        prodHost = 'https://pure-escarpment-35043.herokuapp.com/',
-        devHost = 'http://localhost:5000/';
+    // //  Declare and set constants
+    // const addToDate = select('#addToDate'),
+    //     dateSum = select('#dateSum'),
+    //     dateInput = select('#dateInput'),
+    //     dateInput2 = select('#dateInput2'),
+    //     dateInput3 = select('#dateInput3'),
+    //     dateInput4 = select('#dateInput4'),
+    //     findLoc = select('.findLoc'),
+    //     copyBtn = select('#copyToClip'),
+    //     locationDisplay = select('#locationDisplay'),
+    //     getWeather = select('#getWeather'),
+    //     contactSubmit = select('#contact-submit'),
+    //     placeholderJson = select('#placeholder-json'),
+    //     prodHost = 'https://pure-escarpment-35043.herokuapp.com/',
+    //     devHost = 'http://localhost:5000/';
 
     //Set variables
     zipSearch = select('.search');
