@@ -11,7 +11,7 @@ const paths = {
     scripts: './public/js/*.js',
     styles: './public/css/*.css',
     data: './public/data/*.csv',
-    docs: './public/docs/*/*.pdf'
+    docs: './public/docs/*/*'
 };
 
 const dests = {
@@ -19,7 +19,7 @@ const dests = {
     scripts: 'dist/public/js',
     styles: 'dist/public/css',
     data: 'dist/public/data',
-    docs: 'dist/public/docs'
+    docs: 'dist/public/docs/'
 };
 
 gulp.task('default', ['images', 'minify-css', 'minify-js', 'data', 'docs']);
