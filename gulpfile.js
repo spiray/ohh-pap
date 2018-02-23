@@ -1,4 +1,4 @@
-let gulp = require('gulp'),
+const gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     cleanCSS = require('gulp-clean-css'),
     minify = require('gulp-minify'),
