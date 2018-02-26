@@ -106,14 +106,16 @@ body {
     overflow: hidden;
     display: block;
     position: relative;
-    padding-bottom: 70px;
+    padding-bottom: 61px;
 }
 
-footer {
+.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 70px;
+    height: 61px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     color: lightgray;
     background-color: #343A40;
 }
@@ -125,6 +127,7 @@ footer {
 .footer .btn {
     background-color: #13818D;
     color: #D3D3D3;
+    vertical-align: 0px;
 }
 
 .modal-footer .btn {
