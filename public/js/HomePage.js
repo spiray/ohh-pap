@@ -22,14 +22,11 @@ const prodHost = 'https://pure-escarpment-35043.herokuapp.com/',
 function preload() {
     //   Preload price table csv.
     priceTableH = select("#pricetable");
-    if (priceTableH) {
-        priceData = loadTable('./data/pricetable.csv', 'csv', 'header', undefined, response => response);
-    }
+    if (priceTableH) priceData = loadTable('./data/pricetable.csv', 'csv', 'header', undefined, response => response);
+
     //  Preload Branch Listing data into variable. 
     resultCard = select('.card');
-    if (resultCard) {
-        branchListing = loadTable('./data/branchListing.csv', 'csv', 'header', undefined, response => response);
-    }
+    if (resultCard) branchListing = loadTable('./data/branchListing.csv', 'csv', 'header', undefined, response => response);
 }
 
 function setup() {
@@ -55,9 +52,7 @@ function setup() {
     setInterval(getTime, 1000 * 1);
 
     //  Load Price list data and load it into the HTML tableRow.
-    if (priceTableH && priceData.columns[0] == 'id') {
-        loadPriceTable(priceTableH);
-    }
+    if (priceTableH && priceData.columns[0] == 'id') loadPriceTable(priceTableH);
 
     //  Display weather and update every 30 seconds.
     geoLocation();
@@ -116,12 +111,8 @@ function setup() {
     //  Functionality and event listeners for the branch listing. 
     if (window.location.href == `${devHost}location-pars` ||
         window.location.href == `${prodHost}location-pars`) {
-        zipSearch.changed(() => {
-            branchSearch();
-        })
-        findLoc.mouseClicked(() => {
-            branchSearch();
-        })
+        zipSearch.changed(() => branchSearch());
+        findLoc.mouseClicked(() => branchSearch());
         new Clipboard('#copyToClip');
         copyBtn.mouseClicked(() => {});
     }
@@ -162,14 +153,10 @@ function setup() {
         if (greetingElements) {
             let greeting;
             greeting = hour() < 11 ? 'Good Morning,' : 'Good Afternoon,';
-            for (let greetingElement of greetingElements) {
-                greetingElement.html(greeting);
-            }
+            for (let greetingElement of greetingElements) greetingElement.html(greeting);
         }
         const forms = selectAll('.comment-form');
-        for (let form of forms) {
-            CKEDITOR.replace(`${form.id()}`);
-        }
+        for (let form of forms) CKEDITOR.replace(`${form.id()}`);
         const saveBtn = select('#save-btn');
         saveBtn.mouseClicked(() => {
             let nsData = CKEDITOR.instances.nsForm.getData();
@@ -272,7 +259,7 @@ const geoLocation = () => {
             .then(response => response.json())
             .then(data => {
                 locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
-                    <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
+                <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
             });
     });
 }
@@ -295,9 +282,9 @@ const getWeather = position => {
         .then(response => response.json())
         .then(data => {
             locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
-                                             <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`
+            <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`
         })
-        .catch(err => console.log(`API Error ${err}`));
+        .catch(err => console.log(`API Error: ${err}`));
 }
 
 //  Func to loop through a column in a csv file and return the corresponding Location if found. 
@@ -323,14 +310,10 @@ const getTime = () => {
     let dayOfWeek = weekdays[new Date().getDay()];
     //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     //   let monthName = months[month()];
-    let hr,
-        mn,
-        scnd,
-        time;
-    hr = hour() > 12 ? hour() - 12 : hour();
-    mn = minute() < 10 ? `0${minute()}` : minute();
-    scnd = second() < 10 ? `0${second()}` : second();
-    time = hour() > 11 ? `${hr}:${mn}:${scnd} PM` : `${hr}:${mn}:${scnd} AM`;
+    const hr = hour() > 12 ? hour() - 12 : hour(),
+        mn = minute() < 10 ? `0${minute()}` : minute(),
+        scnd = second() < 10 ? `0${second()}` : second(),
+        time = hour() > 11 ? `${hr}:${mn}:${scnd} PM` : `${hr}:${mn}:${scnd} AM`;
     todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
 }
 

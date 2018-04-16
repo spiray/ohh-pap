@@ -1,32 +1,20 @@
-$(document).ready(function() {
+$(document).ready(() => {
     $('#contact-submit').click(() => {
         $('#contact-us').modal('hide');
         $('#email-sent').modal('show');
     })
-    $('#save-btn').click(() => {
-        $('#enter-comments').modal('hide');
-    })
-    $('.search').keyup(function() {
+    $('#save-btn').click(() => $('#enter-comments').modal('hide'));
+    $('.search').keyup(() => {
         let searchTerm = $('.search').val();
         let listItem = $('.results tbody').children('tr');
         let searchSplit = searchTerm.replace(/ /g, "'):containsi('");
         $.extend($.expr[':'], {
-            'containsi': function(elem, i, match, array) {
-                return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || '').toLowerCase()) >= 0;
-            }
-        })
-        $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function() {
-            $(this).attr('visible', 'false');
-        })
-        $(".results tbody tr:containsi('" + searchSplit + "')").each(function() {
-            $(this).attr('visible', 'true');
-        })
+            'containsi': (elem, i, match, array) => (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || '').toLowerCase()) >= 0
+        });
+        $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(() => $(this).attr('visible', 'false'));
+        $(".results tbody tr:containsi('" + searchSplit + "')").each(() => $(this).attr('visible', 'true'));
         let jobCount = $('.results tbody tr[visible="true"]').length;
-        if (jobCount != 1) {
-            $('.counter').text(`Found ${jobCount} items`);
-        } else {
-            $('.counter').text(`Found ${jobCount} item`);
-        }
+        $('.counter').text(jobCount !== 1 ? `Found ${jobCount} items` : `Found ${jobCount} item`);
         if (jobCount == 0) {
             $('no-result').show();
         } else {

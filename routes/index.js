@@ -64,9 +64,7 @@ router.post('/emailContactForm', (req, res) => {
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return error;
-        }
+        if (error) return error;
     })
     res.send('Email Sent...')
 })
