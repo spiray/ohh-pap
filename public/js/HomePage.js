@@ -13,130 +13,135 @@ let dateValue,
     zipSearch,
     resultLoc,
     resultCard,
-    priceData;
+    priceData,
+    locationDisplay;
 
 //  Declare and set constants
-const prodHost = 'https://pure-escarpment-35043.herokuapp.com/',
-    devHost = 'http://localhost:5000/';
+const prodHost = `https://pure-escarpment-35043.herokuapp.com/`,
+    devHost = `http://localhost:5000/`;
 
 function preload() {
     //   Preload price table csv.
-    priceTableH = select("#pricetable");
-    if (priceTableH) priceData = loadTable('./data/pricetable.csv', 'csv', 'header', undefined, response => response);
+    priceTableH = select(`#pricetable`);
+    if (priceTableH) {
+        priceData = loadTable(`./data/pricetable.csv`, `csv`, `header`, undefined, response => response);
+    }
 
-    //  Preload Branch Listing data into variable. 
-    resultCard = select('.card');
-    if (resultCard) branchListing = loadTable('./data/branchListing.csv', 'csv', 'header', undefined, response => response);
+    //  Preload Branch Listing data into variable.
+    resultCard = select(`.card`);
+    if (resultCard) {
+        branchListing = loadTable(`./data/branchListing.csv`, `csv`, `header`, undefined, response => response);
+    }
 }
 
 function setup() {
     // //  Declare and set constants
-    const addToDate = select('#addToDate'),
-        dateSum = select('#dateSum'),
-        dateInput = select('#dateInput'),
-        dateInput2 = select('#dateInput2'),
-        dateInput3 = select('#dateInput3'),
-        dateInput4 = select('#dateInput4'),
-        findLoc = select('.findLoc'),
-        copyBtn = select('#copyToClip'),
-        locationDisplay = select('#locationDisplay'),
+    const addToDate = select(`#addToDate`),
+        dateSum = select(`#dateSum`),
+        dateInput = select(`#dateInput`),
+        dateInput2 = select(`#dateInput2`),
+        dateInput3 = select(`#dateInput3`),
+        dateInput4 = select(`#dateInput4`),
+        findLoc = select(`.findLoc`),
         // getWeather = select('#getWeather'),
-        contactSubmit = select('#contact-submit');
+        contactSubmit = select(`#contact-submit`);
 
     //Set variables
-    zipSearch = select('.search');
-    resultLoc = select('#resultLoc');
+    zipSearch = select(`.search`);
+    resultLoc = select(`#resultLoc`);
+    locationDisplay = select(`#locationDisplay`);
 
     //  Display time and update every second.
     getTime();
     setInterval(getTime, 1000 * 1);
 
     //  Load Price list data and load it into the HTML tableRow.
-    if (priceTableH && priceData.columns[0] == 'id') loadPriceTable(priceTableH);
+    if (priceTableH && priceData.columns[0] === `id`) {
+        loadPriceTable(priceTableH);
+    }
 
     //  Display weather and update every 30 seconds.
     geoLocation();
     setInterval(geoLocation, 1000 * 60 * 30);
 
     //  Functionality and event listeners for the calculator.
-    if (window.location.href == `${devHost}calc` ||
-        window.location.href == `${prodHost}calc`) {
+    if (window.location.href === `${devHost}calc` ||
+        window.location.href === `${prodHost}calc`) {
         addToDate.input(() => {
             dateValue = dateInput.value();
-            let dat = moment(dateValue).add(addToDate.value(), 'day');
-            dateSum.attribute("value", dat.calendar());
+            /* global moment */
+            dateSum.attribute(`value`, moment(dateValue).add(addToDate.value(), `day`).calendar());
         });
 
         dateInput.input(() => {
-            if (addToDate.value() !== '') {
+            if (addToDate.value() !== ``) {
                 dateValue = dateInput.value();
-                let dat = moment(dateValue).add(addToDate.value(), 'day');
-                dateSum.attribute("value", dat.calendar());
+                dateSum.attribute(`value`, moment(dateValue).add(addToDate.value(), `day`).calendar());
             }
         })
         dateInput2.changed(() => {
-            inTags = selectAll('input');
-            for (let i = 0; i < inTags.length; i++) {
-                if (inTags[i].id().substring(0, 3) == 'Day' && inTags[i].id() !== 'DaysSince') {
-                    inTags[i].attribute("value",
+            inTags = selectAll(`input`);
+            for (const inTag of inTags) {
+                if (inTag.id().substring(0, 3) === `Day` && inTag.id() !== `DaysSince`) {
+                    inTag.attribute(`value`,
                         moment(dateInput2.value())
-                        .add(parseInt(inTags[i].id().substring(3)), 'day')
+                        .add(parseInt(inTag.id().substring(3)), `day`)
                         .calendar());
-                } else if (inTags[i].id() == 'Month15') {
-                    inTags[i].value(
+                } else if (inTag.id() === `Month15`) {
+                    inTag.value(
                         moment(dateInput2.value())
-                        .add(15, 'months')
+                        .add(15, `months`)
                         .calendar());
-                } else if (inTags[i].id() == 'DaysSince') {
-                    inTags[i].value((
+                } else if (inTag.id() === `DaysSince`) {
+                    inTag.value((
                         moment(`${year()}-${month()}-${day()}`)
-                        .diff(dateInput2.value(), 'days')));
+                        .diff(dateInput2.value(), `days`)));
                 }
             }
         });
         dateInput4.changed(() => {
-            select('#Months').value(
+            select(`#Months`).value(
                 moment(dateInput4.value())
-                .diff(dateInput3.value(), 'months'));
+                .diff(dateInput3.value(), `months`));
         });
         dateInput3.changed(() => {
             if (dateInput4.value()) {
-                select('#Months').value(
+                select(`#Months`).value(
                     moment(dateInput4.value())
-                    .diff(dateInput3.value(), 'months'));
+                    .diff(dateInput3.value(), `months`));
             }
         });
     }
 
-    //  Functionality and event listeners for the branch listing. 
-    if (window.location.href == `${devHost}location-pars` ||
-        window.location.href == `${prodHost}location-pars`) {
+    //  Functionality and event listeners for the branch listing.
+    if (window.location.href === `${devHost}location-pars` ||
+        window.location.href === `${prodHost}location-pars`) {
         zipSearch.changed(() => branchSearch());
         findLoc.mouseClicked(() => branchSearch());
-        new Clipboard('#copyToClip');
-        copyBtn.mouseClicked(() => {});
+        /* global Clipboard */
+        new Clipboard(`#copyToClip`);
     }
 
     //Suggestion modal functionality
-    CKEDITOR.replace('contactBody');
+    /* global CKEDITOR */
+    CKEDITOR.replace(`contactBody`);
     if (contactSubmit) {
         contactSubmit.mouseClicked(() => {
-            let closeModal = select('#close-modal');
-            let name = select('#contactName').value();
-            let subject = select('#contactSubject').value();
-            let body = CKEDITOR.instances.contactBody.getData();
-            let email = {
-                name: name,
-                subject: subject,
-                body: body
+            const name = select(`#contactName`).value();
+            const subject = select(`#contactSubject`).value();
+            const body = CKEDITOR.instances.contactBody.getData();
+            const email = {
+                name,
+                subject,
+                body,
             };
-            fetch('/emailContactForm', {
-                    method: 'POST',
+            fetch(`/emailContactForm`, {
+                    method: `POST`,
                     headers: {
-                        "Accept": "*/*",
-                        "Content-type": "application/json"
+                        "Accept": `*/*`,
+                        "Content-type": `application/json`,
                     },
-                    body: JSON.stringify(email)
+                    body: JSON.stringify(email),
                 })
                 .then(response => response.text())
                 .then(data => data);
@@ -144,49 +149,50 @@ function setup() {
     }
 
     //Load comments for prod reports.
-    if (window.location.href == `${devHost}prod-reports` ||
-        window.location.href == `${prodHost}prod-reports`) {
+    if (window.location.href === `${devHost}prod-reports` ||
+        window.location.href === `${prodHost}prod-reports`) {
         //Set reporting comments greeting
-        const adminBtn = select('#admin-btn');
-        const comments = selectAll('.comments');
-        const greetingElements = selectAll('.greeting');
+        const comments = selectAll(`.comments`);
+        const greetingElements = selectAll(`.greeting`);
         if (greetingElements) {
-            let greeting;
-            greeting = hour() < 11 ? 'Good Morning,' : 'Good Afternoon,';
-            for (let greetingElement of greetingElements) greetingElement.html(greeting);
+            const greeting = hour() < 11 ? `Good Morning,` : `Good Afternoon,`;
+            for (const greetingElement of greetingElements) {
+                greetingElement.html(greeting);
+            }
         }
-        const forms = selectAll('.comment-form');
-        for (let form of forms) CKEDITOR.replace(`${form.id()}`);
-        const saveBtn = select('#save-btn');
+        const forms = selectAll(`.comment-form`);
+        for (const form of forms) {
+            CKEDITOR.replace(`${form.id()}`);
+        }
+        const saveBtn = select(`#save-btn`);
         saveBtn.mouseClicked(() => {
-            let nsData = CKEDITOR.instances.nsForm.getData();
-            let resData = CKEDITOR.instances.resForm.getData();
-            let compData = CKEDITOR.instances.compForm.getData();
-            let schedData = CKEDITOR.instances.schedForm.getData();
-            let phoneData = CKEDITOR.instances.phoneForm.getData();
-            let commentBody = {
+            const nsData = CKEDITOR.instances.nsForm.getData();
+            const resData = CKEDITOR.instances.resForm.getData();
+            const compData = CKEDITOR.instances.compForm.getData();
+            const schedData = CKEDITOR.instances.schedForm.getData();
+            const phoneData = CKEDITOR.instances.phoneForm.getData();
+            const commentBody = {
                 nsComment: nsData,
                 resComment: resData,
                 compComment: compData,
                 schedComment: schedData,
-                phoneComment: phoneData
+                phoneComment: phoneData,
             };
-            fetch('/setCommentData', {
-                    method: 'POST',
+            fetch(`/setCommentData`, {
+                    method: `POST`,
                     headers: {
-                        "Accept": "*/*",
-                        "Content-type": "application/json"
+                        "Accept": `*/*`,
+                        "Content-type": `application/json`,
                     },
-                    body: JSON.stringify(commentBody)
+                    body: JSON.stringify(commentBody),
                 })
                 .then(res => res.text())
-                .then(text => text)
-                .catch(err => console.log(err));
+                .then(text => text)[`catch`](err => console.log(err));
             window.location.reload(true);
         })
 
         //Fetch all comments and display them.
-        fetch('getCommentData')
+        fetch(`getCommentData`)
             .then(res => res.json())
             .then(data => {
                 comments[0].html(data.nsComment);
@@ -194,19 +200,18 @@ function setup() {
                 comments[2].html(data.compComment);
                 comments[3].html(data.schedComment);
                 comments[4].html(data.phoneComment);
-            })
-            .catch(err => console.log(err));
+            })[`catch`](err => console.log(err));
     }
 
     //Remove default canvas
-    const unwantedCanvas = select('#defaultCanvas0');
+    const unwantedCanvas = select(`#defaultCanvas0`);
     unwantedCanvas.remove();
 }
 
 //Function that loads the pricetable data into the html table.
 const loadPriceTable = tableForLoop => {
-    let tableHead = createElement('thead');
-    let header = `<tr class="bg-dark theme-color">
+    const tableHead = createElement(`thead`);
+    const header = `<tr class="bg-dark theme-color">
                     <th>${priceData.columns[0].toUpperCase()}</th>
                     <th>${priceData.columns[1]}</th>
                     <th>${priceData.columns[2]}</th>
@@ -218,7 +223,7 @@ const loadPriceTable = tableForLoop => {
                   </tr>`;
     tableHead.html(header);
     tableHead.parent(tableForLoop);
-    let tableBody = createElement('tbody');
+    const tableBody = createElement(`tbody`);
     for (let i = 0; i < priceData.getRowCount(); i++) {
         tableRow = `<tr>
                          <th scope="row">${priceData.rows[i].arr[0]}</th>
@@ -235,26 +240,28 @@ const loadPriceTable = tableForLoop => {
 //  Function to test if browser supports geolocation and call Open Weather Map to get local weather or user entered location weather.
 const geoLocation = () => {
     navigator.geolocation.getCurrentPosition(getWeather, err => {
-        if (sessionStorage.getItem('zip')) {
-            currentZip = sessionStorage.getItem('zip');
+        if (sessionStorage.getItem(`zip`)) {
+            currentZip = sessionStorage.getItem(`zip`);
         } else {
             while (true) {
-                currentZip = prompt('Please enter your zip code.');
-                if (currentZip.length == 5) {
-                    sessionStorage.setItem('zip', currentZip);
+                currentZip = prompt(`Please enter your zip code.`);
+                if (currentZip.length === 5) {
+                    sessionStorage.setItem(`zip`, currentZip);
                     break;
                 } else {
-                    currentZip = prompt('Please enter your zip code.');
+                    currentZip = prompt(`Please enter your zip code.`);
                 }
             }
         }
-        fetch('/getZipWeather', {
-                method: 'POST',
+        fetch(`/getZipWeather`, {
+                method: `POST`,
                 headers: {
-                    "Accept": "*/*",
-                    "Content-type": "application/json"
+                    "Accept": `*/*`,
+                    "Content-type": `application/json`,
                 },
-                body: JSON.stringify({ zip: currentZip })
+                body: JSON.stringify({
+                    zip: currentZip,
+                }),
             })
             .then(response => response.json())
             .then(data => {
@@ -266,48 +273,47 @@ const geoLocation = () => {
 
 //  Callback func to call OpenWeatherMap for weather at given lon & lat.
 const getWeather = position => {
-    let geoCoords = position.coords;
+    const geoCoords = position.coords;
     //  POST request to server side GET request.
-    fetch('/getGeoWeather', {
-            method: 'POST',
+    fetch(`/getGeoWeather`, {
+            method: `POST`,
             headers: {
-                "Accept": "*/*",
-                "Content-type": "application/json"
+                "Accept": `*/*`,
+                "Content-type": `application/json`,
             },
             body: JSON.stringify({
                 latitude: geoCoords.latitude,
-                longitude: geoCoords.longitude
-            })
+                longitude: geoCoords.longitude,
+            }),
         })
         .then(response => response.json())
         .then(data => {
             locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
             <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`
-        })
-        .catch(err => console.log(`API Error: ${err}`));
+        })[`catch`](err => console.log(`API Error: ${err}`));
 }
 
-//  Func to loop through a column in a csv file and return the corresponding Location if found. 
+//  Func to loop through a column in a csv file and return the corresponding Location if found.
 const branchSearch = () => {
     if (zipSearch.value().length !== 5) {
-        resultLoc.html('Enter 5 digit zip code.')
+        resultLoc.html(`Enter 5 digit zip code.`)
     } else {
-        for (let row of branchListing.rows) {
-            if (row.arr[2] == zipSearch.value()) {
+        for (const row of branchListing.rows) {
+            if (row.arr[2] === zipSearch.value()) {
                 resultLoc.html(row.arr[3]);
                 break;
             } else {
-                resultLoc.html('Location not found...');
+                resultLoc.html(`Location not found...`);
             }
         }
     }
 }
 
-//  Func to to get day and time. 
+//  Func to to get day and time.
 const getTime = () => {
-    todayIs = select('#todayIs');
-    let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let dayOfWeek = weekdays[new Date().getDay()];
+    todayIs = select(`#todayIs`);
+    const weekdays = [`Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`];
+    const dayOfWeek = weekdays[new Date().getDay()];
     //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     //   let monthName = months[month()];
     const hr = hour() > 12 ? hour() - 12 : hour(),
