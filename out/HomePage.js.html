@@ -1,4 +1,32 @@
-// Import internal functions
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: HomePage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: HomePage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Import internal functions
 // import { loadPriceTable, geoLocation, getWeather, branchSearch, getTime } from './mainFunc.js';
 
 //  Declare global variables
@@ -67,7 +95,7 @@ function setup() {
     setInterval(getTime, 1000 * 1);
 
     //  Load Price list data and load it into the HTML tableRow.
-    if (priceTableH && priceData.columns[0] === `id`) {
+    if (priceTableH &amp;&amp; priceData.columns[0] === `id`) {
         loadPriceTable(priceTableH);
     }
 
@@ -93,7 +121,7 @@ function setup() {
         dateInput2.changed(() => {
             inTags = selectAll(`input`);
             for (const inTag of inTags) {
-                if (inTag.id().substring(0, 3) === `Day` && inTag.id() !== `DaysSince`) {
+                if (inTag.id().substring(0, 3) === `Day` &amp;&amp; inTag.id() !== `DaysSince`) {
                     inTag.attribute(`value`,
                         moment(dateInput2.value())
                         .add(parseInt(inTag.id().substring(3)), `day`)
@@ -166,7 +194,7 @@ function setup() {
         const comments = selectAll(`.comments`);
         const greetingElements = selectAll(`.greeting`);
         if (greetingElements) {
-            const greeting = hour() < 11 ? `Good Morning,` : `Good Afternoon,`;
+            const greeting = hour() &lt; 11 ? `Good Morning,` : `Good Afternoon,`;
             for (const greetingElement of greetingElements) {
                 greetingElement.html(greeting);
             }
@@ -227,27 +255,27 @@ function setup() {
  */
 const loadPriceTable = tableForLoop => {
     const tableHead = createElement(`thead`);
-    const header = `<tr class="bg-dark theme-color">
-                    <th>${priceData.columns[0].toUpperCase()}</th>
-                    <th>${priceData.columns[1]}</th>
-                    <th>${priceData.columns[2]}</th>
-                    <th>${priceData.columns[3]}</th>
-                    <th>${priceData.columns[4]}</th>
-                  </tr>
-                  <tr class="no-result warning">
-                    <td colspan="4">No Results</td>
-                  </tr>`;
+    const header = `&lt;tr class="bg-dark theme-color">
+                    &lt;th>${priceData.columns[0].toUpperCase()}&lt;/th>
+                    &lt;th>${priceData.columns[1]}&lt;/th>
+                    &lt;th>${priceData.columns[2]}&lt;/th>
+                    &lt;th>${priceData.columns[3]}&lt;/th>
+                    &lt;th>${priceData.columns[4]}&lt;/th>
+                  &lt;/tr>
+                  &lt;tr class="no-result warning">
+                    &lt;td colspan="4">No Results&lt;/td>
+                  &lt;/tr>`;
     tableHead.html(header);
     tableHead.parent(tableForLoop);
     const tableBody = createElement(`tbody`);
-    for (let i = 0; i < priceData.getRowCount(); i++) {
-        tableRow = `<tr>
-                         <th scope="row">${priceData.rows[i].arr[0]}</th>
-                         <td>${priceData.rows[i].arr[1]}</td>
-                         <td>${priceData.rows[i].arr[2]}</td>
-                         <td>${priceData.rows[i].arr[3]}</td>
-                         <td>${priceData.rows[i].arr[4]}</td>
-                    </tr>`;
+    for (let i = 0; i &lt; priceData.getRowCount(); i++) {
+        tableRow = `&lt;tr>
+                         &lt;th scope="row">${priceData.rows[i].arr[0]}&lt;/th>
+                         &lt;td>${priceData.rows[i].arr[1]}&lt;/td>
+                         &lt;td>${priceData.rows[i].arr[2]}&lt;/td>
+                         &lt;td>${priceData.rows[i].arr[3]}&lt;/td>
+                         &lt;td>${priceData.rows[i].arr[4]}&lt;/td>
+                    &lt;/tr>`;
         tableBody.html(tableRow, true);
     }
     tableBody.parent(tableForLoop);
@@ -286,8 +314,8 @@ const geoLocation = () => {
             })
             .then(response => response.json())
             .then(data => {
-                locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
-                <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
+                locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &amp;#8457;
+                &lt;img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`;
             });
     });
 }
@@ -295,7 +323,7 @@ const geoLocation = () => {
 /**
  * @function
  * @name getWeather
- * @description Callback func to call OpenWeatherMap for weather at given lon & lat.
+ * @description Callback func to call OpenWeatherMap for weather at given lon &amp; lat.
  * @param {Object} position position data from browser API.
  * @returns undefined
  */
@@ -315,8 +343,8 @@ const getWeather = position => {
         })
         .then(response => response.json())
         .then(data => {
-            locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &#8457;
-            <img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`
+            locationDisplay.innerHTML = `${data.name} - ${round(data.main.temp * 9 / 5 - 459.67)} &amp;#8457;
+            &lt;img width="26" height="26" src="http://openweathermap.org/img/w/${data.weather[0].icon}.png" />`
         })[`catch`](err => console.log(`API Error: ${err}`));
 }
 
@@ -354,8 +382,8 @@ const getTime = () => {
     //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     //   let monthName = months[month()];
     const hr = hour() > 12 ? hour() - 12 : hour(),
-        mn = minute() < 10 ? `0${minute()}` : minute(),
-        scnd = second() < 10 ? `0${second()}` : second(),
+        mn = minute() &lt; 10 ? `0${minute()}` : minute(),
+        scnd = second() &lt; 10 ? `0${second()}` : second(),
         time = hour() > 11 ? `${hr}:${mn}:${scnd} PM` : `${hr}:${mn}:${scnd} AM`;
     todayIs.html(`${dayOfWeek} - ${month()}/${day()}/${year()} - ${time}`);
 }
@@ -365,4 +393,26 @@ const getTime = () => {
 //     priceData: priceData,
 //     branchlisting: branchListing,
 //     dateSum: dateSum
-// };
+// };</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#branchSearch">branchSearch</a></li><li><a href="global.html#geoLocation">geoLocation</a></li><li><a href="global.html#getTime">getTime</a></li><li><a href="global.html#getWeather">getWeather</a></li><li><a href="global.html#loadPriceTable">loadPriceTable</a></li><li><a href="global.html#preload">preload</a></li><li><a href="global.html#setup">setup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jul 09 2018 15:05:57 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
