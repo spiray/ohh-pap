@@ -1,6 +1,9 @@
 const express = require(`express`),
     nodemailer = require(`nodemailer`),
-    keys = require(`../config/keys`),
+    {
+        emailPass,
+        weatherAPI
+    } = require(`../config/keys`),
     fetch = require(`node-fetch`),
     JsonDB = require(`node-json-db`),
     router = express.Router();
@@ -12,7 +15,7 @@ const transporter = nodemailer.createTransport({
     port: 587,
     auth: {
         user: `joseph@oceanhomehealth.com`,
-        pass: keys.emailPass
+        pass: emailPass
     },
     tls: {
         ciphers: `SSLv3`
@@ -45,21 +48,33 @@ router.get(`/location-pars`, (req, res) => res.render(`location-pars`, {
 }));
 
 // Weather API request if browser navigation is enabled
-router.post(`/getGeoWeather`, (req, res) => {
-        const lat = req.body.latitude;
-        const lon = req.body.longitude;
-        const APIKey = keys.weatherAPI;
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APIKey}`)
-            .then(response => response.json())
-            .then(data => res.send(data))[`catch`](err => console.log(err));
+router.post(`/getGeoWeather`, async(req, res) => {
+        const {
+            latitude,
+            longitude
+        } = req.body;
+        const APIKey = weatherAPI;
+        try {
+            const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${APIKey}`);
+            const data = await response.json();
+            res.send(data);
+        } catch (err) {
+            console.log(err);
+        }
     })
     // Weather API request if browser navigation is disabled
-router.post(`/getZipWeather`, (req, res) => {
-    const zip = req.body.zip;
+router.post(`/getZipWeather`, async(req, res) => {
+    const {
+        zip
+    } = req.body;
     const APIKey = `790e3bcb8a16e2395b51c9f39b7909f7`; //keys.weatherAPI;
-    fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&APPID=${APIKey}`)
-        .then(response => response.json())
-        .then(data => res.send(data))[`catch`](err => console.log(err));
+    try {
+        const repsonse = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&APPID=${APIKey}`);
+        const data = await repsonse.json();
+        res.send(data);
+    } catch (err) {
+        console.error(err)
+    }
 })
 
 router.post(`/emailContactForm`, (req, res) => {

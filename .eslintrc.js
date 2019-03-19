@@ -6,6 +6,10 @@ module.exports = {
     },
     extends: ['eslint:recommended', 'p5js', 'p5js/dom'],
     plugins: [],
+    parserOptions: {
+        ecmaVersion: 2017,
+        sourceType: 'module'
+    },
     rules: {
         'no-cond-assign': 2,
         'eqeqeq': [2, 'smart'],
@@ -31,7 +35,7 @@ module.exports = {
         'arrow-body-style': [2, 'as-needed'],
         'curly': 'error',
         'dot-notation': [2, {
-            allowKeywords: false
+            allowKeywords: true
         }],
         'constructor-super': 2,
         'object-shorthand': 2,

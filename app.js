@@ -1,8 +1,8 @@
 /** Import modules and init app */
-const express = require(`express`),
-    exphbs = require(`express-handlebars`),
-    path = require(`path`),
-    bodyParser = require(`body-parser`);
+const express = require(`express`);
+const exphbs = require(`express-handlebars`);
+const path = require(`path`);
+const bodyParser = require(`body-parser`);
 //keys = require('./config/keys');
 
 /** Initialize App */
@@ -22,7 +22,7 @@ app.engine(`handlebars`, hbs.engine);
 app.set(`view engine`, `handlebars`);
 
 /** Deliver static files */
-app.use(express[`static`](path.join(__dirname, `/dist/public`)));
+app.use(express.static(path.join(__dirname, `/dist/public`)));
 
 /** Configure Body parser to streamline HTTP requests */
 app.use(bodyParser.json());
