@@ -1,3 +1,5 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/spiray/OHHPAP/badge.svg)](https://snyk.io/test/github/spiray/OHHPAP)
+
 # OHHPAP
 Web Application for work
 
