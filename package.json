@@ -24,7 +24,7 @@
         "express": "^4.16.4",
         "express-handlebars": "^3.0.2",
         "express-session": "^1.15.6",
-        "gulp": "^4.0.0",
+        "gulp": "^4.0.2",
         "gulp-clean-css": "^4.0.0",
         "gulp-concat": "^2.6.1",
         "gulp-imagemin": "^5.0.3",
@@ -41,7 +41,7 @@
         "eslint": "^5.15.3",
         "eslint-config-moment": "^2.1.4",
         "eslint-config-p5js": "^1.0.1",
-        "jsdoc": "^3.5.5",
+        "jsdoc": "^3.6.2",
         "mocha": "^6.0.2"
     }
 }
