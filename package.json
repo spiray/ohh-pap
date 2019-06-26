@@ -13,7 +13,8 @@
     "license": "ISC",
     "scripts": {
         "postinstall": "gulp",
-        "start": "node app.js"
+        "start": "node app.js",
+        "update:deps": "ncu -u && npm update && npm install"
     },
     "engines": {
         "node": "^8.9.0",
